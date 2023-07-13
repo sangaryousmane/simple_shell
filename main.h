@@ -14,5 +14,6 @@
 #include <errno.h>
 #include <linux/limits.h>
 
+int _putchar(char c);
 
 #endif
