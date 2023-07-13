@@ -16,5 +16,5 @@
 
 int _putchar(char c);
 int str_to_int(char *str);
-
+int string_len(char *str);
 #endif

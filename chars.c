@@ -1,4 +1,4 @@
-
+#include "main.h"
 
 /**
 * _putchar - writes a character to standard output
@@ -20,7 +20,7 @@ int string_len(char *str)
 {
 	int i, length = 0;
 
-	for ( i = 0; i str[i] !='0'; i++)
+	for (i = 0; i str[i] != '\0'; i++)
 	{
 		length++;
 	}
@@ -38,11 +38,10 @@ int str_to_int(char *str)
 	int i, j;
 	int num = 0, x = 1;
 
-	for (i = 0; (str[i] < 48 || str[i] > 57) && (str[i] != '0'); i++)
+	for (i = 0; (str[i] < '0' || str[i] > '9') && (str[i] != '\0'); i++)
 	{
-
-	             if  (str[i] == '-')	
-			     x = x * -1;
+		if  (str[i] == '-')
+			x = x * -1;
 	}
 	j = i;
 
@@ -51,5 +50,4 @@ int str_to_int(char *str)
 		n = (n * 10) + x * ((str[j]) - '0');
 	}
 	return (n);
-	
 }

@@ -7,6 +7,9 @@
 * @argv: arguments values
 * @Return: exit status
 *
+* Description: this is the entrypoint for all codes , functions
+* in this project
+*
 */
 int main(int argc, char **argv)
 {
