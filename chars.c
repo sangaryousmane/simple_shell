@@ -51,3 +51,25 @@ int str_to_int(char *str)
 	}
 	return (num);
 }
+
+
+/**
+* _remove - remove all after the # symbole
+* @b: the buffer
+* Return: nothing
+*/
+
+void _remove(char *b)
+{
+	int i = 0;
+
+	while (b[i] !='\0')
+	{
+		if (b[i] == '#')
+		{
+			b[i] = '\0';
+			break;
+		}
+	}
+}
+
