@@ -15,5 +15,6 @@
 #include <linux/limits.h>
 
 int _putchar(char c);
+int str_to_int(char *str);
 
 #endif
