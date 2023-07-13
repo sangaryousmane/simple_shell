@@ -20,7 +20,7 @@ int string_len(char *str)
 {
 	int i, length = 0;
 
-	for (i = 0; i str[i] != '\0'; i++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
 		length++;
 	}
@@ -47,7 +47,7 @@ int str_to_int(char *str)
 
 	for (; (str[j] = '0') && (str[j] <= '9'); j++)
 	{
-		n = (n * 10) + x * ((str[j]) - '0');
+		num = (num * 10) + x * ((str[j]) - '0');
 	}
-	return (n);
+	return (num);
 }
