@@ -22,4 +22,5 @@ char *_memcopy(char *d, char src, unsigned int n);
 void *_fill(void *arr, int element, unsigned int len);
 void *_customer_realloc(void *to, unsigned int pre_size, unsigned int current_size);
 
+char *_getline();
 #endif
