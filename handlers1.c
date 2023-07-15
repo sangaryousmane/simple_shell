@@ -20,9 +20,9 @@ void _exit_handler(int signal)
 * @d: destination
 * @src: source
 * @n: size
-* Return void
+* Return: void
 */
-char *_memcopy(char *d, char src, unsigned int n)
+char *_memcopy(char *d, char *src, unsigned int n)
 {
 	unsigned int i;
 
@@ -34,6 +34,13 @@ char *_memcopy(char *d, char src, unsigned int n)
 	return (d);
 }
 
+/**
+* _fill - fill array values
+* @arr: void pointer
+* @element: element to fill
+* @len: the length
+* Return: nothing
+*/
 void *_fill(void *arr, int element, unsigned int len)
 {
 	char *ptr = arr;
@@ -51,12 +58,13 @@ void *_fill(void *arr, int element, unsigned int len)
 
 /**
 * _custom_realloc - Reallocates a block of memory
-* @p: the pointer
+* @to: the void pointer
 * @pre_size: old size
 * @current_size: New size of the pointer
 * Return: a void pointer with reallocated memory
 */
-void *_custom_realloc(void *to, unsigned int pre_size, unsigned int current_size)
+void *_custom_realloc(void *to, unsigned int pre_size,
+		unsigned int current_size)
 {
 	void *r;
 

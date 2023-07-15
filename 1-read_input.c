@@ -5,6 +5,7 @@
 /**
 * _getline: read user input from stdin
 * Return: input of the user
+* Description - handle the reading of users input
 */
 char *_getline()
 {
@@ -22,32 +23,26 @@ char *_getline()
 	{
 		fflush(stdin);
 		rd_content = read(STDIN_FILENO, &c, 1);
-		
 		if (rd_content == 0)
 		{
 		free(buff);
 		exit(EXIT_SUCCESS);
 		}
 		buff[i] = c;
-		
 		if (buff[0] == '\n')
 		{
 		free(buff);
 		return ("\0");
 		}
-
-	
 		if (i >= buff_size)
 		{
-			buff = custom_realloc(buff, buff_size, buff_size+1);
-			
+			buff = _custom_realloc(buff, buff_size, buff_size + 1);
 			if (buff == NULL)
 			{
-				return (NULL):
+				return (NULL);
 			}
 		}
 	}
-
 	buff[i] = '\0';
 	_remove(buff);
 	return (buff);

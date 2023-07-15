@@ -63,7 +63,7 @@ void _remove(char *b)
 {
 	int i = 0;
 
-	while (b[i] !='\0')
+	while (b[i] != '\0')
 	{
 		if (b[i] == '#')
 		{
