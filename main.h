@@ -1,6 +1,9 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+
+#define DISPLAY_TO_STDOUT(e) (write(STDOUT_FILENO, e, string_len))
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio.h>
