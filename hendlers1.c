@@ -3,6 +3,19 @@
 
 
 /**
+* _exit_handler - Handle the ^C shortcut
+* @signal: signal to capture
+* Return: nothing
+*/
+void _exit_handler(int signal)
+{
+	if (signal == 2)
+	{
+		DISPLAY_TO_STDOUT("\n$hsh ");
+	}
+}
+
+/**
 * _memcopy - copy some bytes from source to destination
 * @d: destination
 * @src: source
@@ -37,13 +50,13 @@ void *_fill(void *arr, int element, unsigned int len)
 }
 
 /**
-* _customer_realloc - Reallocates a block of memory
+* _custom_realloc - Reallocates a block of memory
 * @p: the pointer
 * @pre_size: old size
 * @current_size: New size of the pointer
 * Return: a void pointer with reallocated memory
 */
-void *_customer_realloc(void *to, unsigned int pre_size, unsigned int current_size)
+void *_custom_realloc(void *to, unsigned int pre_size, unsigned int current_size)
 {
 	void *r;
 
