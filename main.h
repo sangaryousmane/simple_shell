@@ -32,5 +32,8 @@ char *_getline();
 void exit_(char **command, char *line_read, FILE *fd);
 void check_file(char *line_read, int c, FILE file, char **argv);
 int _strncompare(const char *str1, const char *str2, size_t n);
- char **parse_cmd(char *input_);
+char **parse_cmd(char *input_);
+
+/** Builtin  commands */
+void _cmd(char **cmd, char *input_, char **argv, int c);
 #endif

@@ -3,6 +3,40 @@
 
 
 /**
+* _cmd - exit status for the shell
+* @cmd: the command parsed
+* @input_: user input
+* @argv: Program name
+* @count: to count the execution
+* Return: nothing
+*/
+void _cmd(char **cmd, char *input_, char **argv, int count)
+{
+	int s, i = 0;
+	if (cmd[1] == NULL)
+	{
+		free(input_);
+		free(cmd);
+		exit(0);
+	}
+	while (cmd[1][i])
+	{
+		if (_isalpha(cmd[1][i++]) != 0)
+		{
+			_custom_err(argv, counter, cmd);
+			break;
+		}
+		else
+		{
+			s = str_to_int(cmd[1]);
+			free(input_);
+			free(cmd);
+			exit(s);
+		}
+	}
+}
+
+/**
 * _isalpha - checks for alphabet
 * @c: character
 * Return: 1 if true and 0 otherwise
