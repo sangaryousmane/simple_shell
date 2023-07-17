@@ -26,5 +26,9 @@ void *_fill(void *arr, int element, unsigned int len);
 void *_custom_realloc(void *to, unsigned int pre_size, unsigned int current_size);
 void _exit_handler(int signal);
 char *_getline();
-
+void exit_(char **command, char *line_read, FILE *fd);
+void exit_(char **command, char *line_read, FILE *fd);
+void check_file(char *line_read, int c, FILE file, char **argv);
+int _strncompare(const char *str1, const char *str2, size_t n);
+ char **parse_cmd(char *input_);
 #endif
