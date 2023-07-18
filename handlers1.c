@@ -20,7 +20,7 @@ void _exit_handler(int signal)
 * @d: destination
 * @src: source
 * @n: size
-* Return: void
+* Return: destination string
 */
 char *_memcopy(char *d, char *src, unsigned int n)
 {
@@ -44,15 +44,13 @@ char *_memcopy(char *d, char *src, unsigned int n)
 void *_fill(void *arr, int element, unsigned int len)
 {
 	char *ptr = arr;
-	unsigned int i = 0;
+	unsigned int i;
 
-	while (i < len)
+	for (i = 0; i < len; i++)
 	{
 		*ptr = element;
 		ptr++;
-		i++;
 	}
-
 	return (arr);
 }
 
