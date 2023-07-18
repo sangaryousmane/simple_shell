@@ -24,7 +24,7 @@ void _cmd(char **cmd, char *input_, char **argv, int count)
 	{
 		if (_isalpha(cmd[1][i++]) != 0)
 		{
-			_custom_err(argv, counter, cmd);
+			_custom_err(argv, count, cmd);
 			break;
 		}
 		else
@@ -63,7 +63,7 @@ int _isalpha(int c)
 * @argv: args list
 * Return: 0 on success, -1 for wrong cmd and 1 on null
 */
-int checkcmd(char **cmd, char input_, int counter, char **argv)
+int checkcmd(char **cmd, char *input_, int counter, char **argv)
 {
 	int status;
 	pid_t pid;
@@ -146,7 +146,7 @@ int handler(char **command, int error)
 
 	 while ((builtin+i)->command)
 	 {
-		 if (cmp_str(command[0], (builtin + i)->command) == 0)
+		 if (str_cmp(command[0], (builtin + i)->command) == 0)
 		 {
 			 return ((builtin + i) ->is_builtin(command, error));
 		 }

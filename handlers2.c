@@ -12,7 +12,7 @@ char **parse_cmd(char *input_)
 	char **parsed_t;
 	char *t;
 
-	if (input == NULL)
+	if (input_ == NULL)
 	{
 		return (NULL);
 	}
@@ -30,7 +30,7 @@ char **parse_cmd(char *input_)
 		t = _strtok(NULL, "\n ");
 		count++;
 	}
-	parsed_t = [count] = NULL;
+	parsed_t[count] = NULL;
 	return (parsed_t);
 }
 
@@ -77,12 +77,12 @@ void check_file(char *line_read, int c, FILE file, char **argv)
 	}
 	else if (builtin(command) == 0)
 	{
-		handler_(cmd, status);
+		handler(command, status);
 		free(command);
 	}
 	else
 	{
-		check_cmd(command, line_read, c, argv);
+		checkcmd(command, line_read, c, argv);
 		free(command);
 	}
 }

@@ -11,8 +11,7 @@ int main(int argc, char **argv)
 {
 	(void) argc;
 	char *input, **cmd;
-	int count = 0;
-	int exit_status = 1, success_status = 0;
+	int exit_status = 1, success_status = 0, count = 0;
 
 	if (argv[1])
 	{
@@ -30,7 +29,7 @@ int main(int argc, char **argv)
 		if (input[0] == '\0')
 			continue;
 		cmd = parse_cmd(input);
-		if (cmp_str(cmd[0], "exit") == 0)
+		if (str_cmp(cmd[0], "exit") == 0)
 		{
 			_cmd(cmd, input, argv, count);
 		}
@@ -49,5 +48,4 @@ int main(int argc, char **argv)
 		free(input);
 	}
 	return (exit_status);
-
 }

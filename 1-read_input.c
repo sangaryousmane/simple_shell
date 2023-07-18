@@ -118,7 +118,7 @@ char *_strtok(char *str, const char *delim)
 	{
 		n[i] = '\0';
 		n = n + i + 1;
-		if (n == '\0')
+		if (*n == '\0')
 			n = NULL;
 	}
 	return (t);

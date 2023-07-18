@@ -3,6 +3,7 @@
 
 
 #define DISPLAY_TO_STDOUT(e) (write(STDOUT_FILENO, e, string_len(e)))
+extern char **environ;
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -40,7 +41,7 @@ void *_fill(void *arr, int element, unsigned int len);
 void *_custom_realloc(void *to, unsigned int pre_size, unsigned int current_size);
 
 int _isalpha(int c);
-int checkcmd(char **cmd, char input_, int counter, char **argv);
+int checkcmd(char **cmd, char *input_, int counter, char **argv);
 void _exit_handler(int signal);
 char *_getline();
 void exit_(char **command, char *line_read, FILE *fd);
