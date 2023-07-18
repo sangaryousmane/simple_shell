@@ -17,6 +17,20 @@
 #include <errno.h>
 #include <linux/limits.h>
 
+
+/**
+* struct  shell_builtin - execution n command handling
+* @command: the command to handler
+* @is_builtin: executes when a builtin is true.
+*/ 
+struct shell_builtin
+{
+	char *command;
+	int (*is_builtin)(char **_line, int e);
+};
+
+typedef struct shell_builtin  _command;
+
 int _putchar(char c);
 int str_to_int(char *str);
 int string_len(char *str);

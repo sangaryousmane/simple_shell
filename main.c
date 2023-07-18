@@ -16,11 +16,9 @@ int main(int argc, char **argv)
 
 	if (argv[1])
 	{
-		read(argv[1], argv);
+		read_(argv[1], argv);
 	}
-
 	signal(2, _exit_handler);
-
 	while (exit_status)
 	{
 		count++;
@@ -31,9 +29,22 @@ int main(int argc, char **argv)
 		input = _getline();
 		if (input[0] == '\0')
 			continue;
-
-		/** Implement consult history here */
-
+		cmd = parse_cmd(input);
+		if (cmp_str(cmd[0], "exit") == 0)
+		{
+			_cmd(cmd, input, argv, count);
+		}
+		else if (builtin(cmd) == 0)
+		{
+			success_status = handler(cmd, success_status);
+			free(cmd);
+			free(input);
+			continue;
+		}
+		else
+		{
+			success_status = checkcmd(cmd, input, count, argv);
+		}
 		free(cmd);
 		free(input);
 	}

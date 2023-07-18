@@ -97,3 +97,32 @@ int checkcmd(char **cmd, char input_, int counter, char **argv)
 	return (0);
 }
 
+
+/**
+* builtin - check shell built in
+* @command: the parsed command
+* Return: 0 on success and -1 on Fail.
+*/
+int builtin(char **command)
+{
+	int i = 0;
+	_command fun[] = {
+		{"echo", NULL},
+		{"cd", NULL},
+		{"help", NULL},
+		{NULL, NULL}
+	};
+	     if (*command == NULL)
+	     {
+		     return (-1);
+	     }
+	     
+	     while ((fun + i)-> command)
+	     {
+		     if (str_cmp(command[0], (fun+i)->command) == 0)
+			     return (0);
+		     i++;
+	     }
+	     
+	     return (-1);
+}
