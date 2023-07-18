@@ -13,6 +13,7 @@
 void _cmd(char **cmd, char *input_, char **argv, int count)
 {
 	int s, i = 0;
+
 	if (cmd[1] == NULL)
 	{
 		free(input_);

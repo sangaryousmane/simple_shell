@@ -24,7 +24,7 @@ char **parse_cmd(char *input_)
 	}
 
 	t = _strtok(NULL, "\n ");
-	while(t)
+	while (t)
 	{
 		parsed_t[count] = t;
 		t = _strtok(NULL, "\n ");

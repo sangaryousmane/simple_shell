@@ -49,3 +49,80 @@ char *_getline()
 
 }
 
+
+/**
+* is_delim - checks for delimeter
+* @chr: the character to check
+* @str: the strint to check
+* Return: 0 on failure or 1 on success
+*
+*/
+unsigned int is_delim(char chr, const char *str)
+{
+	unsigned int i = 0;
+
+	while (str[i] != '\0')
+	{
+		if (chr == str[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+/**
+* _strtok - tokenize a string 
+* @str: the string to tokenize
+* @delim: the delimeter
+* Return: next token or null
+*/
+char *_strtok(char *str, const char *delim)
+{
+	unsigned  int i = 0;
+	static char *n, *t;
+
+	if (str !=NULL)
+	{
+		n = str;
+	}
+	t = n;
+
+	if (t == NULL)
+		return (NULL);
+
+	for (; t[i] != '\0'; i++)
+	{
+		if (is_delim(t[i], delim) == 0)
+			break;
+	}
+	if (n[i] == '\0' || n[i] == '#')
+	{
+		n = NULL;
+		return (NULL);
+	}
+	t = n + i;
+	n = t;
+	i = 0;
+
+	while (n[i] != '\0')
+	{
+		if (is_delim(n[i], delim) == 1)
+			break;
+		i++;
+	}
+
+	if (n[i] == '\0')
+	{
+		n = NULL;
+	}
+	else
+	{
+		n[i] = '\0';
+		n = n + i + 1;
+		if (n == '\0')
+			n = NULL;
+	}
+	return (t);
+}
+
+
+
