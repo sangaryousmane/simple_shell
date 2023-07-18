@@ -126,3 +126,31 @@ int builtin(char **command)
 	     
 	     return (-1);
 }
+
+
+/**
+* handler - handles builtin commands
+* @error: last execution status
+* @command: the parsed command
+* Return: executed builtin
+*/
+int handler(char **command, int error)
+{
+	 _command builtin[] = {
+		 {"echo", _echo},
+		 {"env", _env},
+		 {"cd", _cd},
+		 {NULL, NULL}
+	 };
+	 int i = 0;
+
+	 while ((builtin+i)->command)
+	 {
+		 if (cmp_str(command[0], (builtin + i)->command) == 0)
+		 {
+			 return ((builtin + i) ->is_builtin(command, error));
+		 }
+		 i++;
+	 }
+	 return (-1);
+}
