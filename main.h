@@ -53,4 +53,6 @@ unsigned int is_delim(char chr, const char *str);
 
 /** Builtin  commands */
 void _cmd(char **cmd, char *input_, char **argv, int c);
+int builtin(char **cmd);
+int handler(char **command, int error);
 #endif
