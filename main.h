@@ -34,6 +34,9 @@ void check_file(char *line_read, int c, FILE file, char **argv);
 int _strncompare(const char *str1, const char *str2, size_t n);
 char **parse_cmd(char *input_);
 
+char *_strtok(char *str, const char *delim);
+unsigned int is_delim(char chr, const char *str);
+
 /** Builtin  commands */
 void _cmd(char **cmd, char *input_, char **argv, int c);
 #endif
