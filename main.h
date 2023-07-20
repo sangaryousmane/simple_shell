@@ -57,5 +57,5 @@ void _cmd(char **cmd, char *input_, char **argv, int c);
 int builtin(char **cmd);
 int str_cmp(char *str1, char *str2);
 int handler(char **command, int error);
-void read_files(char *name, char **argv);
+void read_(char *name, char **argv);
 #endif

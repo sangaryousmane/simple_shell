@@ -34,31 +34,31 @@ int str_cmp(char *str1, char *str2)
 
 /**
  * read_ - read commands from file
- * @filename: file's name
+ * @name: file's name
  * @argv: name of the program
  * Return: -1 on error, otherwise 0
  */
 void read_(char *name, char **argv)
 {
-	   FILE *file;
-    char *line_read = NULL;
-    size_t len = 0;
-    int count = 0;
-    ssize_t s;
+	size_t len = 0;
+	int count = 0;
+	char *line_read = NULL;
+	ssize_t s;
+	FILE *file;
 
-    file = fopen(name, "r");
-    if (file == NULL)
-    {
-        exit(1);
-    }
-    s = getline(&line_read, &len, file);
-    for (; s != -1; count++)
-    {
-        check_file(line_read, count, file, argv);
+	file = fopen(name, "r");
 
-    }
-    if (line_read)
-        free(line_read);
-    fclose(file);
-    exit(0);
+	if (file == NULL)
+	{
+		exit(1);
+	}
+	s = getline(&line_read, &len, file);
+	for (; s != -1; count++)
+	{
+		check_file(line_read, count, file, argv);
+	}
+	if (line_read)
+		free(line_read);
+	fclose(file);
+	exit(0);
 }
