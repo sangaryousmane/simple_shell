@@ -10,7 +10,8 @@
 int main(int argc, char **argv)
 {
 	(void) argc;
-	char *input, **cmd;
+	char *input;
+	char **cmd;
 	int exit_status = 1, success_status = 0, count = 0;
 
 	if (argv[1])

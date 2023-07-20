@@ -45,7 +45,7 @@ int checkcmd(char **cmd, char *input_, int counter, char **argv);
 void _exit_handler(int signal);
 char *_getline();
 void exit_(char **command, char *line_read, FILE *fd);
-void check_file(char *line_read, int c, FILE file, char **argv);
+void check_file(char *line_read, int c, FILE *file, char **argv);
 int _strncompare(const char *str1, const char *str2, size_t n);
 char **parse_cmd(char *input_);
 

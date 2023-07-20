@@ -64,7 +64,7 @@ int _strncompare(const char *str1, const char *str2, size_t n)
 * @file: file descriptor
 * @argv: name of the program
 */
-void check_file(char *line_read, int c, FILE file, char **argv)
+void check_file(char *line_read, int c, FILE *file, char **argv)
 {
 	char **command;
 	int status = 0;
