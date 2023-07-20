@@ -16,7 +16,7 @@ int str_cmp(char *str1, char *str2)
 
 	if (str1 == NULL || str2 == NULL)
 		return (1);
-	if (str1 != str2)
+	if (length1 != length2)
 		return (1);
 	for (i = 0; str1[i]; i++)
 	{
