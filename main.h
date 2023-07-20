@@ -58,4 +58,8 @@ int builtin(char **cmd);
 int str_cmp(char *str1, char *str2);
 int handler(char **command, int error);
 void read_(char *name, char **argv);
+
+int _env(__attribute__((unused)) char **command, __attribute__((unused)) int error);
+int _cd(char **command, __attribute__((unused))int error);
+int _echo(char **command, int error);
 #endif
