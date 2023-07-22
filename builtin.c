@@ -15,13 +15,13 @@ int _cd(char **command, __attribute__((unused))int error)
 {
 
 int status;
-char cwd[PATH_MAX_LEN];
+char cwd[PATH_MAX];
 status = 1;
 char *pwd =  getenv("PWD");
 
 if (!command[1])
 	status = chdir(getenv("$HOME"));
-else if (Str_cmp(command[1], "-") == 0)
+else if (str_cmp(command[1], "-") == 0)
 {
 	status = chdir("OPWD");
 }
@@ -57,7 +57,7 @@ __attribute__((unused)) int error) {
 
 size_t i;
 int len;
-static char  *env;
+
 
 
 for (i = 0;  env[i] != NULL; i++)
@@ -86,15 +86,15 @@ if (!command[1])
 {
 return (handle_display(command));
 }
-else if (str_cmp(command[1], "$?") == 0)
+else if (str_cmp(command[1], "$?", 2) == 0)
 {
 print_num(error);
 }
-else if (str_cmp(command[1], "$$") == 0)
+else if (str_cmp(command[1], "$$", 2) == 0)
 {
 print_num(pid);
 }
-else if (str_cmp(command[1], "$$PATH") == 0)
+else if (str_cmp(command[1], "$$PATH", 5) == 0)
 {
 DISPLAY_OUT(p);
 free(p);
