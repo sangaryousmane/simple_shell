@@ -70,7 +70,6 @@ int checkcmd(char **cmd, char *input_, int counter, char **argv)
 
 	if (*cmd == NULL)
 		return (-1);
-
 	pid = fork();
 	if (pid == -1)
 	{
@@ -112,19 +111,17 @@ int builtin(char **command)
 		{"help", NULL},
 		{NULL, NULL}
 	};
-	     if (*command == NULL)
-	     {
-		     return (-1);
-	     }
-	     
-	     while ((fun + i)-> command)
-	     {
-		     if (str_cmp(command[0], (fun+i)->command) == 0)
-			     return (0);
-		     i++;
-	     }
-	     
-	     return (-1);
+	if (*command == NULL)
+	{
+		return (-1);
+	}
+	while ((fun + i)->command)
+	{
+		if (str_cmp(command[0], (fun + i)->command) == 0)
+			return (0);
+		i++;
+	}
+	return (-1);
 }
 
 
@@ -136,21 +133,23 @@ int builtin(char **command)
 */
 int handler(char **command, int error)
 {
-	 _command builtin[] = {
-		 {"echo", _echo},
-		 {"env", _env},
-		 {"cd", _cd},
-		 {NULL, NULL}
-	 };
-	 int i = 0;
+	_command builtin[] = {
+		{"echo", _echo},
+		{"env", _env},
+		{"cd", _cd},
+		{NULL, NULL}
+	};
 
-	 while ((builtin+i)->command)
-	 {
-		 if (str_cmp(command[0], (builtin + i)->command) == 0)
-		 {
-			 return ((builtin + i) ->is_builtin(command, error));
-		 }
-		 i++;
-	 }
-	 return (-1);
+	int i = 0;
+
+	while ((builtin + i)->command)
+	{
+		if (str_cmp(command[0], (builtin + i)->command) == 0)
+		{
+			return ((builtin + i)->is_builtin(command, error));
+		}
+		i++;
+	}
+	return (-1);
 }
+

@@ -16,7 +16,7 @@ int str_cmp(char *str1, char *str2)
 
 	if (str1 == NULL || str2 == NULL)
 		return (1);
-	if (str1 != str2)
+	if (length1 != length2)
 		return (1);
 	for (i = 0; str1[i]; i++)
 	{
@@ -31,3 +31,34 @@ int str_cmp(char *str1, char *str2)
 	return (status);
 }
 
+
+/**
+ * read_ - read commands from file
+ * @name: file's name
+ * @argv: name of the program
+ * Return: -1 on error, otherwise 0
+ */
+void read_(char *name, char **argv)
+{
+	size_t len = 0;
+	int count = 0;
+	char *line_read = NULL;
+	ssize_t s;
+	FILE *file;
+
+	file = fopen(name, "r");
+
+	if (file == NULL)
+	{
+		exit(1);
+	}
+	s = getline(&line_read, &len, file);
+	for (; s != -1; count++)
+	{
+		check_file(line_read, count, file, argv);
+	}
+	if (line_read)
+		free(line_read);
+	fclose(file);
+	exit(0);
+}
