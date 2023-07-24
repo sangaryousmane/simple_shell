@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
-* _int_char - Convert Integer To Char
-* @n: Int To Convert
+* _int_char - Convert To Char
+* @n: integer
 * Return: Char Pointer
 */
 char *_int_char(unsigned int n)
@@ -24,10 +24,10 @@ mem[i + 1] = '\0';
 return (mem);
 }
 /**
-* _rev - Reverse Array
-* @arr:Array To Reverse
-* @len:Length Of Array
-* Return: Void(Reverse Array)
+* _rev - Reverse an  Array
+* @arr:Array
+* @len:Length
+* Return: Void
 */
 
 
