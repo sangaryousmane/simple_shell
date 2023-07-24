@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
 * _int_char - Convert Integer To Char
 * @n: Int To Convert
@@ -9,7 +11,6 @@ int len, i;
 i = 0;
 len = 0;
 char *mem;
-len = intlen(n);
 mem = malloc(len + 1);
 *mem = '\0';
 for (i = 0; n / 10; i++)
