@@ -1,23 +1,18 @@
 #include "main.h"
 
-
-
-
 /**
- * _cd - directory to be changed
- * @command: the command to be parsed
- * @error:comand
- * Return: 0 and 1
- */
-
-
+* _cd - directory to be changed
+* @command: the command to be parsed
+* @error:comand
+* Return: 0 and 1
+*/
 int _cd(char **command, __attribute__((unused))int error)
 {
 
 int status;
 char cwd[PATH_MAX];
-status = 1;
 char *pwd =  getenv("PWD");
+status = 1;
 
 if (!command[1])
 	status = chdir(getenv("$HOME"));
@@ -31,8 +26,10 @@ status = chdir(command[1]);
 }
 
 if (status == -1)
-	perror("$hsh");
+{
+perror("$hsh");
 return (-1);
+}
 else
 {
 getcwd(cwd, sizeof(cwd));
@@ -53,18 +50,21 @@ return (0);
  */
 
 int _env(__attribute__((unused)) char **command,
-__attribute__((unused)) int error) {
+__attribute__((unused)) int error)
+{
 
 size_t i;
 int len;
 
 
 
-for (i = 0;  env[i] != NULL; i++)
+for (i = 0;  environ[i] != NULL; i++)
 {
-len = string_len(env[i]);
-write(1, env[i],  len);
+len = string_len(environ[i]);
+write(1, environ[i],  len);
 write(STDOUT_FILENO, "\n", 1);
+}
+return (0);
 }
 
 /**
@@ -73,9 +73,6 @@ write(STDOUT_FILENO, "\n", 1);
 *@command: Parsed Command
 * Return: Always 0
 */
-
-
-
 int _echo(char **command, int error)
 {
 char *p = getenv("PATH");
@@ -86,23 +83,23 @@ if (!command[1])
 {
 return (handle_display(command));
 }
-else if (str_cmp(command[1], "$?", 2) == 0)
+else if (_strncompare(command[1], "$?", 2) == 0)
 {
-print_num(error);
+_int_print(error);
 }
-else if (str_cmp(command[1], "$$", 2) == 0)
+else if (_strncompare(command[1], "$$", 2) == 0)
 {
-print_num(pid);
+_int_print(pid);
 }
-else if (str_cmp(command[1], "$$PATH", 5) == 0)
+else if (_strncompare(command[1], "$$PATH", 5) == 0)
 {
-DISPLAY_OUT(p);
+DISPLAY_TO_STDOUT(p);
 free(p);
 }
 else
 {
 return (handle_display(command));
 }
-DISPLAY_OUT("\n");
+DISPLAY_TO_STDOUT("\n");
 return (1);
 }

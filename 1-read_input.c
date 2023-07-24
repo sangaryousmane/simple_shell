@@ -1,7 +1,52 @@
 #include "main.h"
 
 
+/**
+ * handle_display - Executes user echo commands
+ * @command: user input cmd
+ * Return: 0 Success, otherwise fail on -1
+ */
+int handle_display(char **command)
+{
+pid_t process_id;
+int status;
 
+process_id = fork();
+if (process_id == 0)
+{
+    if (execve("/bin/echo", command, environ) == -1)
+    {
+        return -1;
+    }
+    exit(EXIT_FAILURE);
+}
+else if (process_id == -1)
+{
+	return -1;
+}
+else
+{
+	int exited = 0;
+	int signaled = 0;
+	
+	while (!(exited && signaled))
+	{
+		waitpid(process_id, &status, WUNTRACED);
+		if (WIFEXITED(status))
+		{
+			exited = 1;
+		}
+		else if (WIFSIGNALED(status))
+		{
+			signaled = 1;
+		}
+	}
+}
+return 1;
+}
+	
+
+	
 /**
 * _getline: read user input from stdin
 * Return: input of the user

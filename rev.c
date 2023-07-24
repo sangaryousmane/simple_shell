@@ -1,37 +1,13 @@
 #include "main.h"
 
-/**
-* _int_char - Convert To Char
-* @n: integer
-* Return: Char Pointer
-*/
-char *_int_char(unsigned int n)
-{
-int len, i;
-i = 0;
-len = 0;
-char *mem;
-mem = malloc(len + 1);
-*mem = '\0';
-for (i = 0; n / 10; i++)
-{
-mem[i]  = (n % 10)  + '0';
-n /= 10;
-}
-mem[i] = (n % 10) + '0';
-_rev(mem, len);
-mem[i + 1] = '\0';
-return (mem);
-}
+
+
 /**
 * _rev - Reverse an  Array
 * @arr:Array
 * @len:Length
 * Return: Void
 */
-
-
-
 void _rev(char *arr, int len)
 {
 int i = 0;
@@ -44,3 +20,31 @@ arr[i] = arr[len - 1 - i];
 arr[len - 1 - i] = a;
 }
 }
+
+
+
+/**
+ * _error - Display shell errors
+ * @user_input: Accepts user input
+ * @count: counter
+ * @argv: argument list
+ * Return: nothing
+ */
+void _error(char *_input, int count, char **argv)
+{
+	char *err;
+
+	DISPLAY_TO_STDOUT(argv[0]);
+	DISPLAY_TO_STDOUT(": ");
+	
+	err = _int_char(count);
+	
+	DISPLAY_TO_STDOUT(err);
+	
+	free(err);
+	
+	DISPLAY_TO_STDOUT(": ");
+	DISPLAY_TO_STDOUT(_input);
+	DISPLAY_TO_STDOUT(": not found\n");
+}
+
