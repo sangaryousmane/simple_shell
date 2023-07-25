@@ -2,6 +2,46 @@
 
 
 /**
+* _getenv - gets environment variable
+* @name: name of the env variable
+* Return: value of env variable else NULL
+*/
+char *_getenv(char *name)
+{
+	size_t nl, vl;
+	char *value;
+	int k, x, j;
+
+	nl = string_len(name);
+	for (k = 0 ; environ[k]; k++)
+	{
+		if (_strncompare(name, environ[k], nl) == 0)
+		{
+			vl = string_len(environ[k]) - nl;
+			value = malloc(sizeof(char) * vl);
+			if (!value)
+			{
+				free(value);
+				perror("Error");
+				return (NULL);
+			}
+
+			j = 0;
+			for (x = nl + 1; environ[k][x]; x++, j++)
+			{
+				value[j] = environ[k][x];
+			}
+			value[j] = '\0';
+			return (value);
+		}
+	}
+
+	return (NULL);
+}
+
+
+
+/**
  *  str_cmp - Compare Two String
  *  @str1: string one
  *  @str2: string two
