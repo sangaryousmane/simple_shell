@@ -77,6 +77,7 @@ int cmd_path(char **command);
 char *_build_command(char *token, char *value);
 char *_str_concat(char *destination, char *source);
 void _custom_err(char **argv, int c, char **cmd);
+char *_getenv(char *name);
 void _int_print(unsigned int n);
 void _char_print(int c);
 #endif
