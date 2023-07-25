@@ -70,6 +70,7 @@ void _remove(char *b)
 			b[i] = '\0';
 			break;
 		}
+		i++;
 	}
 }
 
