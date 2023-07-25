@@ -75,31 +75,25 @@ return (0);
 */
 int _echo(char **command, int error)
 {
-char *p = getenv("PATH");
-unsigned int pid;
-pid = getppid();
+    char *p;
+    unsigned int process_id = getppid();
 
-if (!command[1])
-{
-return (handle_display(command));
-}
-else if (_strncompare(command[1], "$?", 2) == 0)
-{
-_int_print(error);
-}
-else if (_strncompare(command[1], "$$", 2) == 0)
-{
-_int_print(pid);
-}
-else if (_strncompare(command[1], "$$PATH", 5) == 0)
-{
-DISPLAY_TO_STDOUT(p);
-free(p);
-}
-else
-{
-return (handle_display(command));
-}
-DISPLAY_TO_STDOUT("\n");
-return (1);
+    if (_strncompare(command[1], "$?", 2) == 0) {
+        print_number_in(error);
+        DISPLAY_TO_STDOUT("\n");
+    } else if (_strncompare(command[1], "$$", 2) == 0) {
+        _int_print(process_id);
+        DISPLAY_TO_STDOUT("\n");
+
+    } else if (_strncompare(command[1], "$PATH", 5) == 0) {
+        p = getenv("PATH");
+        DISPLAY_TO_STDOUT(p);
+        DISPLAY_TO_STDOUT("\n");
+        free(p);
+    }
+    else
+    {
+        return (handle_display(command));
+    }
+    return (1);
 }
