@@ -71,7 +71,7 @@ void check_file(char *line_read, int c, FILE *file, char **argv)
 
 	command = parse_cmd(line_read);
 
-	if (_strncompare(command[0], "exit", 0))
+	if (_strncompare(command[0], "exit", 4) == 0)
 	{
 			exit_(command, line_read, file);
 	}
