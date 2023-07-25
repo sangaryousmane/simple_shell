@@ -11,7 +11,7 @@ int _cd(char **command, __attribute__((unused))int error)
 
 int status;
 char cwd[PATH_MAX];
-char *pwd =  getenv("PWD");
+char *pwd =  _getenv("PWD");
 status = 1;
 
 if (!command[1])
@@ -90,7 +90,7 @@ int _echo(char **command, int error)
 	}
 	else if (_strncompare(command[1], "$PATH", 5) == 0)
 	{
-		p = getenv("PATH");
+		p = _getenv("PATH");
 		DISPLAY_TO_STDOUT(p);
 		DISPLAY_TO_STDOUT("\n");
 		free(p);
