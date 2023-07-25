@@ -1,6 +1,27 @@
 #include "main.h"
 
 
+/**
+* _char_print - print a num char
+* @c: the number
+* Return: nothing
+*/
+void _char_print(int c)
+{
+	unsigned int sign = c;
+
+	if (c < 0)
+	{
+		_putchar('-');
+		sign = -sign;
+	}
+
+	if ((sign / 10) > 0)
+	{
+		_int_print(sign / 10);
+	}
+	_putchar(sign % 10 + '0');
+}
 
 /**
 * _rev - Reverse an  Array

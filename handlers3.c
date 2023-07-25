@@ -104,8 +104,8 @@ int checkcmd(char **cmd, char *input_, int counter, char **argv)
 */
 int builtin(char **command)
 {
-	int i = 0;
-	_command fun[] = {
+	int i;
+	_command arr[] = {
 		{"echo", NULL},
 		{"cd", NULL},
 		{"help", NULL},
@@ -115,11 +115,13 @@ int builtin(char **command)
 	{
 		return (-1);
 	}
-	while ((fun + i)->command)
+
+	for (i = 0; (arr + i)->command; i++)
 	{
-		if (str_cmp(command[0], (fun + i)->command) == 0)
+		if (str_cmp(command[0], (arr + i)->command) == 0)
+		{
 			return (0);
-		i++;
+		}
 	}
 	return (-1);
 }
@@ -140,15 +142,14 @@ int handler(char **command, int error)
 		{NULL, NULL}
 	};
 
-	int i = 0;
+	int i;
 
-	while ((builtin + i)->command)
+	for (i = 0; (builtin + i)->command; i++)
 	{
 		if (str_cmp(command[0], (builtin + i)->command) == 0)
 		{
 			return ((builtin + i)->is_builtin(command, error));
 		}
-		i++;
 	}
 	return (-1);
 }
