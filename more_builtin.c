@@ -56,7 +56,7 @@ int cmd_path(char **command)
   struct stat buf;
 
 
-  path = getenv("PATH");
+  path = _getenv("PATH");
   value = _strtok(path, ":");
   while (value != NULL)
   {
