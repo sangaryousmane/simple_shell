@@ -63,3 +63,17 @@ void read_(char *name, char **argv)
 	fclose(file);
 	exit(0);
 }
+
+
+/**
+* _free - free and reassigned
+* @ppttr: double points
+* @ptr: single point
+*/
+void _free(char **ppttr, char *ptr)
+{
+	free(ppttr);
+	free(ptr);
+	ppttr = NULL;
+	ptr = NULL;
+}
