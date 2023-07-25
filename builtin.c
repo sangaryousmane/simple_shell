@@ -15,10 +15,10 @@ char *pwd =  getenv("PWD");
 status = 1;
 
 if (!command[1])
-	status = chdir(getenv("$HOME"));
+	status = chdir(getenv("HOME"));
 else if (str_cmp(command[1], "-") == 0)
 {
-	status = chdir("OPWD");
+	status = chdir(getenv("OLDPWD"));
 }
 else
 {
@@ -27,13 +27,13 @@ status = chdir(command[1]);
 
 if (status == -1)
 {
-perror("$hsh");
+perror("hsh");
 return (-1);
 }
-else
+else if (status != -1)
 {
 getcwd(cwd, sizeof(cwd));
-setenv("OPWD", pwd, 1);
+setenv("OLDPWD", pwd, 1);
 setenv("PWD", cwd, 1);
 }
 return (0);
@@ -75,6 +75,7 @@ return (0);
 */
 int _echo(char **command, int error)
 {
+<<<<<<< HEAD
 	char *p;
 	unsigned int process_id = getppid();
 	
@@ -100,4 +101,27 @@ int _echo(char **command, int error)
 		return (handle_display(command));
 	}
 	return (1);
+=======
+    char *p;
+    unsigned int process_id = getppid();
+
+    if (_strncompare(command[1], "$?", 2) == 0) {
+        _char_int(error);
+        DISPLAY_TO_STDOUT("\n");
+    } else if (_strncompare(command[1], "$$", 2) == 0) {
+        _int_print(process_id);
+        DISPLAY_TO_STDOUT("\n");
+
+    } else if (_strncompare(command[1], "$PATH", 5) == 0) {
+        p = getenv("PATH");
+        DISPLAY_TO_STDOUT(p);
+        DISPLAY_TO_STDOUT("\n");
+        free(p);
+    }
+    else
+    {
+        return (handle_display(command));
+    }
+    return (1);
+>>>>>>> 5921abeb7d58ec170c2b9039c2a03cfff49efd6e
 }
