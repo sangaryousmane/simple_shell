@@ -41,11 +41,11 @@ int str_to_int(char *str)
 	for (i = 0; (str[i] < '0' || str[i] > '9') && (str[i] != '\0'); i++)
 	{
 		if  (str[i] == '-')
-			x = x * -1;
+			x *= -1;
 	}
 	j = i;
 
-	for (; (str[j] = '0') && (str[j] <= '9'); j++)
+	for (; (str[j] >= '0') && (str[j] <= '9'); j++)
 	{
 		num = (num * 10) + x * ((str[j]) - '0');
 	}
