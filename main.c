@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 	{
 		read_(argv[1], argv);
 	}
-	signal(2, _exit_handler);
+	signal(SIGINT, _exit_handler);
 	while (exit_status)
 	{
 		count++;
@@ -28,7 +28,9 @@ int main(int argc, char **argv)
 		}
 		input = _getline();
 		if (input[0] == '\0')
+		{
 			continue;
+		}
 		cmd = parse_cmd(input);
 		if (str_cmp(cmd[0], "exit") == 0)
 		{
@@ -39,6 +41,8 @@ int main(int argc, char **argv)
 			success_status = handler(cmd, success_status);
 			free(cmd);
 			free(input);
+			cmd = NULL;
+			input = NULL;
 			continue;
 		}
 		else
@@ -47,6 +51,8 @@ int main(int argc, char **argv)
 		}
 		free(cmd);
 		free(input);
+		cmd = NULL;
+		input = NULL;
 	}
 	return (exit_status);
 }

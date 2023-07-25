@@ -4,8 +4,8 @@
 
 /**
 * _rev - Reverse an  Array
-* @arr:Array
-* @len:Length
+* @arr: array of string
+* @len: the length
 * Return: Void
 */
 void _rev(char *arr, int len)
@@ -24,25 +24,21 @@ arr[len - 1 - i] = a;
 
 
 /**
- * _error - Display shell errors
- * @user_input: Accepts user input
- * @count: counter
- * @argv: argument list
- * Return: nothing
- */
+* _error - Display shell errors
+* @user_input: Accepts user input
+* @count: counter
+* @argv: argument list
+* Return: nothing
+*/
 void _error(char *_input, int count, char **argv)
 {
 	char *err;
 
 	DISPLAY_TO_STDOUT(argv[0]);
 	DISPLAY_TO_STDOUT(": ");
-	
 	err = _int_char(count);
-	
 	DISPLAY_TO_STDOUT(err);
-	
 	free(err);
-	
 	DISPLAY_TO_STDOUT(": ");
 	DISPLAY_TO_STDOUT(_input);
 	DISPLAY_TO_STDOUT(": not found\n");

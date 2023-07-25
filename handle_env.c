@@ -54,25 +54,17 @@ char *_build_command(char *token, char *value)
 }
 
 /**
- * _int_print - unsigned int
+ * _int_print - print unsigned int
  * @n: unsigned int
  * Return: Void
  */
 void _int_print(unsigned int n)
 {
-	unsigned int x = n;
-	unsigned int temp = 1;
+	unsigned int value = n;
 
-	while (x / temp > 10)
+	if ((value / 10) > 0)
 	{
-        temp *= 10;
+		_int_print(value / 10);
 	}
-
-	while (temp > 0)
-	{
-		_putchar((x / temp) + '0');
-		x %= temp;
-		temp /= 10;
-	}
-	_putchar(x % 10 + '0');
+	_putchar(value % 10 + '0');
 }

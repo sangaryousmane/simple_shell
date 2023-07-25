@@ -53,9 +53,10 @@ void read_(char *name, char **argv)
 		exit(1);
 	}
 	s = getline(&line_read, &len, file);
-	for (; s != -1; count++)
+	while (s != -1)
 	{
 		check_file(line_read, count, file, argv);
+		count++;
 	}
 	if (line_read)
 		free(line_read);

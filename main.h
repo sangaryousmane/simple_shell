@@ -32,6 +32,7 @@ struct shell_builtin
 
 typedef struct shell_builtin  _command;
 
+/** utility commands **/
 int _putchar(char c);
 int str_to_int(char *str);
 int string_len(char *str);
@@ -40,6 +41,8 @@ char *_memcopy(char *d, char *src, unsigned int n);
 void *_fill(void *arr, int element, unsigned int len);
 void *_custom_realloc(void *to, unsigned int pre_size, unsigned int current_size);
 
+
+/** command for handling commandline args and and string **/
 int _isalpha(int c);
 int checkcmd(char **cmd, char *input_, int counter, char **argv);
 void _exit_handler(int signal);
@@ -49,6 +52,7 @@ void check_file(char *line_read, int c, FILE *file, char **argv);
 int _strncompare(const char *str1, const char *str2, size_t n);
 char **parse_cmd(char *input_);
 
+/** Commands for tokenization **/
 char *_strtok(char *str, const char *delim);
 unsigned int is_delim(char chr, const char *str);
 char *_int_char(unsigned int n);
@@ -63,6 +67,7 @@ void read_(char *name, char **argv);
 void _error(char *user_input, int count, char **argv);
 int handle_display(char **command);
 
+/** commands for path finding **/
 int len_int(int n);
 int _env(__attribute__((unused)) char **command, __attribute__((unused)) int error);
 int _cd(char **command, __attribute__((unused))int error);
