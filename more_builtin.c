@@ -23,25 +23,26 @@ int len_int(int n)
 */
 char *_int_char(unsigned int n)
 {
-   int len = 0, i = 0;
-   char *s;
-
-
-   len = len_int(n);
-   s = malloc(len + 1);
-   if (!s)
-       return (NULL);
-   *s = '\0';
-   while (n / 10)
-   {
-       s[i] = (n % 10) + '0';
-       n /= 10;
-       i++;
-   }
-   s[i] = (n % 10) + '0';
-   _rev(s, len);
-   s[i + 1] = '\0';
-   return (s);
+	int len = 0, i = 0;
+	char *s;	
+	len = len_int(n);
+	s = malloc(len + 1);
+ 
+	if (!s)
+		return (NULL);
+   
+	*s = '\0';
+	
+	while (n / 10)
+	{
+		s[i] = (n % 10) + '0';
+		n /= 10;
+		i++;
+	}
+	s[i] = (n % 10) + '0';
+	_rev(s, len);
+	s[i + 1] = '\0';
+	return (s);
 }
 
 
@@ -52,27 +53,29 @@ char *_int_char(unsigned int n)
 */
 int cmd_path(char **command)
 {
-  char *path, *value, *cmd_path;
-  struct stat buf;
+	char *path, *value, *cmd_path;
+	struct stat buf;
+	
+	path = _getenv("PATH");
+	value = _strtok(path, ":");
+ 
 
-
-  path = _getenv("PATH");
-  value = _strtok(path, ":");
-  while (value != NULL)
-  {
-     cmd_path = _build_command(*command, value);
-     if (stat(cmd_path, &buf) == 0)
-     {
-        *command = strdup(cmd_path);
-        free(cmd_path);
-        free(path);
-        return (0);
-     }
-     free(cmd_path);
-     value = _strtok(NULL, ":");
-  }
-  free(path);
-  return (1);
+	while (value != NULL)
+	{
+		cmd_path = _build_command(*command, value);
+		
+		if (stat(cmd_path, &buf) == 0)
+		{
+			*command = strdup(cmd_path);
+			free(cmd_path);
+			free(path);
+			return (0);
+		}
+		free(cmd_path);
+		value = _strtok(NULL, ":");
+	}
+	free(path);
+	return (1);
 }
 
 
