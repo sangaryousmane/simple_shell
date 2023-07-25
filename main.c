@@ -39,20 +39,14 @@ int main(int argc, char **argv)
 		else if (builtin(cmd) == 0)
 		{
 			success_status = handler(cmd, success_status);
-			free(cmd);
-			free(input);
-			cmd = NULL;
-			input = NULL;
+			_free(cmd, input);
 			continue;
 		}
 		else
 		{
 			success_status = checkcmd(cmd, input, count, argv);
 		}
-		free(cmd);
-		free(input);
-		cmd = NULL;
-		input = NULL;
+		_free(cmd, input);
 	}
 	return (exit_status);
 }
