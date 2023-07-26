@@ -13,7 +13,9 @@ int main(int argc, char **argv)
 	(void) argc;
 
 	if (argv[1] != NULL)
+	{
 		read_(argv[1], argv);
+	}
 	signal(SIGINT, _exit_handler);
 	while (status)
 	{
@@ -45,19 +47,19 @@ int main(int argc, char **argv)
 	}
 	return (status);
 }
+
+
 /**
- * check_builtin - check builtin
- *
- * @cmd:command to check
+ * builtin - check for builtin
+ * @cmd: the command to check
  * Return: 0 Succes -1 Fail
  */
-int check_builtin(char **cmd)
+int builtin(char **cmd)
 {
-	bul_t fun[] = {
+	_command built[] = {
 		{"cd", NULL},
 		{"help", NULL},
 		{"echo", NULL},
-		{"history", NULL},
 		{NULL, NULL}
 	};
 	int i = 0;
@@ -66,24 +68,27 @@ int check_builtin(char **cmd)
 		return (-1);
 	}
 
-	while ((fun + i)->command)
+	while ((built + i)->command)
 	{
-		if (_strcmp(cmd[0], (fun + i)->command) == 0)
+		if (_strcmp(cmd[0], (built + i)->command) == 0)
 			return (0);
 		i++;
 	}
 	return (-1);
 }
 /**
- * creat_envi - Creat Array of Enviroment Variable
- * @envi: Array of Enviroment Variable
- * Return: Void
+ * mul_env - multi environment variables
+ * @env: double point arr
+ * Return: nothing
  */
-void creat_envi(char **envi)
+void mul_env(char **env)
 {
-	int i;
+	int i = 0;
 
-	for (i = 0; environ[i]; i++)
+	while (environ[i])
+	{
 		envi[i] = _strdup(environ[i]);
+		i++;
+	}
 	envi[i] = NULL;
 }

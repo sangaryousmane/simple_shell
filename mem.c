@@ -1,17 +1,19 @@
 #include "main.h"
 
+
+
 /**
 * _custom_realloc -  a custom function that reallocates memory
 * @ptr: the void pointer
-* @old_size: prev size
+* @prev: prev size
 * @new_size: current size
 * Return: nothing
 */
-void *_custom_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+void *_custom_realloc(void *ptr, unsigned int prev, unsigned int new_size)
 {
 	void *result;
 
-	if (new_size == old_size)
+	if (new_size == prev)
 		return (ptr);
 	if (new_size == 0 && ptr)
 	{
@@ -28,7 +30,7 @@ void *_custom_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	}
 	else
 	{
-		_memcopy(result, ptr, old_size);
+		_memcopy(result, ptr, prev);
 		free(ptr);
 	}
 	return (result);
