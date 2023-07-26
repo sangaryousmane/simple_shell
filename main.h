@@ -58,6 +58,7 @@ char *_strtok(char *str, const char *delim);
 unsigned int is_delim(char chr, const char *str);
 char *_int_char(unsigned int n);
 void _rev(char *arr, int len);
+void mul_env(char **env);
 
 /** Builtin  commands */
 void _cmd(char **cmd, char *input_, char **argv, int c);
