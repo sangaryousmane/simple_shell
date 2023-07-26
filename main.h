@@ -1,9 +1,9 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+extern char **environ;
 
 #define DISPLAY_TO_STDOUT(e) (write(STDOUT_FILENO, e, string_len(e)))
-extern char **environ;
 
 #include <stdio.h>
 #include <stdlib.h>
