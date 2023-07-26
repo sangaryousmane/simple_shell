@@ -7,10 +7,11 @@
 */
 char *_getline()
 {
+	
 	int i;
 	int _size = 1024, rd;
 	char c = 0;
-	char *buffer = malloc(buffsize);
+	char *buffer = malloc(_size);
 
 	if (!buffer)
 	{
@@ -49,3 +50,20 @@ char *_getline()
 	return (buffer);
 }
 
+
+/**
+* mul_env - multi environment variables
+* @env: double point arr
+* Return: nothing
+*/
+void mul_env(char **env)
+{
+	int i = 0;
+	
+	while (environ[i])
+        {
+		env[i] = _strdup(environ[i]);
+		i++;
+	}
+	env[i] = NULL;
+}

@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 			continue;
 		}
 		cmd = parse_cmd(input);
-		if (_strcmp(cmd[0], "exit") == 0)
+		if (str_cmp(cmd[0], "exit") == 0)
 		{
 			check_file(cmd, input, argv, counter);
 		}
@@ -75,20 +75,4 @@ int builtin(char **cmd)
 		i++;
 	}
 	return (-1);
-}
-/**
- * mul_env - multi environment variables
- * @env: double point arr
- * Return: nothing
- */
-void mul_env(char **env)
-{
-	int i = 0;
-
-	while (environ[i])
-	{
-		envi[i] = _strdup(environ[i]);
-		i++;
-	}
-	envi[i] = NULL;
 }

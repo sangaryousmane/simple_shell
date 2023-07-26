@@ -9,17 +9,17 @@
  */
 void _remove(char *buffer)
 {
-        int i = 0;
-
-        while (buffer[i] != '\0')
-        {
-                if (buffer[i] == '#')
-                {
-                        buffer[i] = '\0';
-                        break;
-                }
-                i++;
-        }
+	int i = 0;
+	
+	while (buffer[i] != '\0')
+	{
+		if (buffer[i] == '#')
+		{
+			buffer[i] = '\0';
+			break;
+		}
+		i++;
+	}
 }
 
 
@@ -36,7 +36,7 @@ unsigned int is_delim(char chr, const char *str)
 
 	while (str[j] != '\0')
 	{
-		if (chr == s[j])
+		if (chr == str[j])
 			return (1);
 		j++;
 	}
