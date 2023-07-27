@@ -7,7 +7,7 @@
  * @argv: name of the program
  * Return: nothing
  */
-void _custom_error(char *input, int count, char **argv)
+void _custom_error(char **argv, int count, char **input)
 {
 	char *error;
 
