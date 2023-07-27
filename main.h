@@ -40,6 +40,7 @@ void _remove(char *b);
 char *_memcopy(char *d, char *src, unsigned int n);
 void *_fill(void *arr, int element, unsigned int len);
 void *_custom_realloc(void *to, unsigned int pre_size, unsigned int current_size);
+char *_strncpy(char *dest, char *src, int n);
 
 
 /** command for handling commandline args and and string **/
@@ -84,4 +85,5 @@ void _custom_err(char **argv, int c, char **cmd);
 char *_getenv(char *name);
 void _int_print(unsigned int n);
 void _char_print(int c);
+void _puts(char *str);
 #endif
