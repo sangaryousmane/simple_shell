@@ -35,7 +35,7 @@ typedef struct shell_builtin  _command;
 /** utility commands **/
 int _putchar(char c);
 int str_to_int(char *str);
-int string_len(char *str);
+int _strlen(char *str);
 void _remove(char *b);
 char *_memcopy(char *d, char *src, unsigned int n);
 void *_fill(void *arr, int element, unsigned int len);
