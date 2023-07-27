@@ -35,7 +35,7 @@ typedef struct shell_builtin  _command;
 /** utility commands **/
 int _putchar(char c);
 int str_to_int(char *str);
-int string_len(char *str);
+int _strlen(char *str);
 void _remove(char *b);
 char *_memcopy(char *d, char *src, unsigned int n);
 void *_fill(void *arr, int element, unsigned int len);
@@ -54,6 +54,7 @@ int _strncompare(const char *str1, const char *str2, size_t n);
 char **parse_cmd(char *input_);
 char *_strcopy(char *destination, char *source);
 char *_strdup(char *str);
+void _parsed(char *line, int counter, FILE *fp, char **argv);
 
 /** Commands for tokenization **/
 char *_strtok(char *str, const char *delim);
