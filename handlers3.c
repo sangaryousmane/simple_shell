@@ -64,7 +64,7 @@ int handle_display(char **command)
  * @command: the command
  * Return: nothing
  */
-void _error(char **argv, int count, char **command)
+void _error(char *command, int count, char **argv)
 {
         char *error = _itoa(count);
 
