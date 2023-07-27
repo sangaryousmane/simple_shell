@@ -52,6 +52,8 @@ void _free(char **ppttr, char *ptr);
 void check_file(char *line_read, int c, FILE *file, char **argv);
 int _strncompare(const char *str1, const char *str2, size_t n);
 char **parse_cmd(char *input_);
+char *_strcopy(char *destination, char *source);
+char *_strdup(char *str);
 
 /** Commands for tokenization **/
 char *_strtok(char *str, const char *delim);
@@ -66,7 +68,7 @@ int builtin(char **cmd);
 int str_cmp(char *str1, char *str2);
 int handler(char **command, int error);
 void read_(char *name, char **argv);
-void _error(char *user_input, int count, char **argv);
+void _error(char **user_input, int count, char **argv);
 int handle_display(char **command);
 
 /** commands for path finding **/
