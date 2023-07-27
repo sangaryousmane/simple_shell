@@ -70,7 +70,11 @@ int builtin(char **cmd);
 int str_cmp(char *str1, char *str2);
 int handler(char **command, int error);
 void read_(char *name, char **argv);
+<<<<<<< HEAD
 void _error(char *user_input, int count, char **argv);
+=======
+void _error(char *command, int count, char **argv);
+>>>>>>> e8fe9d1eb46e13d07c6d288d5f28cdc901cc472f
 int handle_display(char **command);
 
 /** commands for path finding **/

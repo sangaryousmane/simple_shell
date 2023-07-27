@@ -7,7 +7,11 @@
  * @argv: name of the program
  * Return: nothing
  */
+<<<<<<< HEAD
 void _custom_error(char **input, int count, char **argv)
+=======
+void _custom_error(char **argv, int count, char **input)
+>>>>>>> e8fe9d1eb46e13d07c6d288d5f28cdc901cc472f
 {
 	char *error;
 
@@ -64,7 +68,7 @@ int handle_display(char **command)
  * @command: the command
  * Return: nothing
  */
-void _error(char **argv, int count, char **command)
+void _error(char *command, int count, char **argv)
 {
         char *error = _int_char(count);
 
