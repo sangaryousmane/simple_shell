@@ -19,7 +19,7 @@ int handler(char **cmd, int er)
 
 	while ((bil + i)->command)
 	{
-		if (_strcmp(cmd[0], (bil + i)->command) == 0)
+		if (str_cmp(cmd[0], (bil + i)->command) == 0)
 		{
 			return ((bil + i)->fun(cmd, er));
 		}
