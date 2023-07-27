@@ -31,3 +31,41 @@ char **parse_cmd(char *input)
 	tokens[i] = NULL;
 	return (tokens);
 }
+
+
+
+/**
+ * exit_bul - Exit Statue Shell
+ * @cmd: Parsed Command
+ * @input: User Input
+ * @argv:Program Name
+ * @c:Excute Count
+ * Return: Void (Exit Statue)
+ */
+void  exit_bul(char **cmd, char *input, char **argv, int c)
+{
+	int status, i = 0;
+
+	if (cmd[1] == NULL)
+	{
+		free(input);
+		free(cmd);
+		exit(EXIT_SUCCESS);
+	}
+	while (cmd[1][i])
+	{
+		if (_isalpha(cmd[1][i++]) != 0)
+		{
+			_prerror(argv, c, cmd);
+			break;
+		}
+		else
+		{
+			status = str_to_int(cmd[1]);
+			free(input);
+			free(cmd);
+			exit(statue);
+		}
+	}
+}
+
