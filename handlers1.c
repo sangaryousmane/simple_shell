@@ -16,7 +16,7 @@ int _cd(char **cmd, __attribute__((unused))int er)
 	{
 		value = chdir(getenv("HOME"));
 	}
-	else if (_strcompare(cmd[1], "-") == 0)
+	else if (str_cmp(cmd[1], "-") == 0)
 	{
 		value = chdir(getenv("OLDPWD"));
 	}
@@ -120,7 +120,7 @@ int _echo(char **cmd, int st)
 
 	}
 	else
-		return (print_echo(cmd));
+		return (handle_display(cmd));
 
 	return (1);
 }

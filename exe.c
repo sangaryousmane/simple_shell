@@ -21,7 +21,7 @@ int handler(char **cmd, int er)
 	{
 		if (str_cmp(cmd[0], (bil + i)->command) == 0)
 		{
-			return ((bil + i)->fun(cmd, er));
+			return ((bil + i)->is_builtin(cmd, er));
 		}
 		i++;
 	}

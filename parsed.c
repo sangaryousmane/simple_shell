@@ -56,7 +56,7 @@ void  check_file(char **cmd, char *input, char **argv, int c)
 	{
 		if (_isalpha(cmd[1][i++]) != 0)
 		{
-			_error(argv, c, cmd);
+			_custom_error(argv, c, cmd);
 			break;
 		}
 		else

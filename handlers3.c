@@ -7,7 +7,7 @@
  * @argv: name of the program
  * Return: nothing
  */
-void _custom_error(char *input, int count, char **argv)
+void _custom_error(char **input, int count, char **argv)
 {
 	char *error;
 
@@ -18,7 +18,7 @@ void _custom_error(char *input, int count, char **argv)
 	DISPLAY_TO_STDOUT(error);
 	DISPLAY_TO_STDOUT(": ");
 	DISPLAY_TO_STDOUT(input);
-	PRINTER(": not found\n");
+	DISPLAY_TO_STDOUT(": not found\n");
 }
 
 /**
@@ -66,7 +66,7 @@ int handle_display(char **command)
  */
 void _error(char **argv, int count, char **command)
 {
-        char *error = _itoa(count);
+        char *error = _int_char(count);
 
         DISPLAY_TO_STDOUT(argv[0]);
         DISPLAY_TO_STDOUT(": ");

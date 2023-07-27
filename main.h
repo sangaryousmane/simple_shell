@@ -50,7 +50,7 @@ void _exit_handler(int signal);
 char *_getline();
 void exit_(char **command, char *line_read, FILE *fd);
 void _free(char **ppttr, char *ptr);
-void check_file(char *line_read, int c, FILE *file, char **argv);
+void check_file(char **cmd, char *input, char **argv, int c);
 int _strncompare(const char *str1, const char *str2, size_t n);
 char **parse_cmd(char *input_);
 char *_strcopy(char *destination, char *source);
@@ -70,7 +70,7 @@ int builtin(char **cmd);
 int str_cmp(char *str1, char *str2);
 int handler(char **command, int error);
 void read_(char *name, char **argv);
-void _error(char **user_input, int count, char **argv);
+void _error(char *user_input, int count, char **argv);
 int handle_display(char **command);
 
 /** commands for path finding **/
@@ -81,7 +81,7 @@ int _echo(char **command, int error);
 int cmd_path(char **command);
 char *_build_command(char *token, char *value);
 char *_str_concat(char *destination, char *source);
-void _custom_err(char **argv, int c, char **cmd);
+void _custom_error(char **argv, int c, char **cmd);
 char *_getenv(char *name);
 void print_number(unsigned int n);
 void _char_print(int c);
