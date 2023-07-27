@@ -35,14 +35,14 @@ char **parse_cmd(char *input)
 
 
 /**
- * exit_bul - Exit Statue Shell
+ * check_file - Exit Statue Shell
  * @cmd: Parsed Command
  * @input: User Input
  * @argv:Program Name
  * @c:Excute Count
  * Return: Void (Exit Statue)
  */
-void  exit_bul(char **cmd, char *input, char **argv, int c)
+void  check_file(char **cmd, char *input, char **argv, int c)
 {
 	int status, i = 0;
 
