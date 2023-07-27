@@ -18,7 +18,7 @@ void _custom_error(char **argv, int count, char **input)
 	DISPLAY_TO_STDOUT(error);
 	DISPLAY_TO_STDOUT(": ");
 	DISPLAY_TO_STDOUT(input);
-	PRINTER(": not found\n");
+	DISPLAY_TO_STDOUT(": not found\n");
 }
 
 /**
