@@ -93,7 +93,7 @@ void exit_(char **cmd, char *line, FILE *fd)
 			perror("illegal number");
 		}
 	}
-	status = _atoi(cmd[1]);
+	status = str_to_int(cmd[1]);
 	free(line);
 	free(cmd);
 	fclose(fd);
