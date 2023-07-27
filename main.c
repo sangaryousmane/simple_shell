@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 		cmd = parse_cmd(input);
 		if (str_cmp(cmd[0], "exit") == 0)
 		{
-			check_file(cmd, input, argv, counter);
+			exit_bul(cmd, input, argv, counter);
 		}
 		else if (builtin(cmd) == 0)
 		{
