@@ -3,7 +3,7 @@
 
 extern char **environ;
 
-#define DISPLAY_TO_STDOUT(e) (write(STDOUT_FILENO, e, string_len(e)))
+#define DISPLAY_TO_STDOUT(e) (write(STDOUT_FILENO, e, _strlen(e)))
 
 #include <stdio.h>
 #include <stdlib.h>

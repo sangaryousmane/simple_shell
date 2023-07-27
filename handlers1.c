@@ -16,7 +16,7 @@ int _cd(char **cmd, __attribute__((unused))int er)
 	{
 		value = chdir(getenv("HOME"));
 	}
-	else if (_strcmp(cmd[1], "-") == 0)
+	else if (_strcompare(cmd[1], "-") == 0)
 	{
 		value = chdir(getenv("OLDPWD"));
 	}
@@ -100,22 +100,22 @@ int _echo(char **cmd, int st)
 	char *path;
 	unsigned int  pid = getppid();
 
-	if (_strncmp(cmd[1], "$?", 2) == 0)
+	if (_strncompare(cmd[1], "$?", 2) == 0)
 	{
 		print_number_in(st);
-		PRINTER("\n");
+		DISPLAY_TO_STDOUT("\n");
 	}
-	else if (_strncmp(cmd[1], "$$", 2) == 0)
+	else if (_strncompare(cmd[1], "$$", 2) == 0)
 	{
 		print_number(pid);
-		PRINTER("\n");
+		DISPLAY_TO_STDOUT("\n");
 
 	}
-	else if (_strncmp(cmd[1], "$PATH", 5) == 0)
+	else if (_strncompare(cmd[1], "$PATH", 5) == 0)
 	{
 		path = _getenv("PATH");
-		PRINTER(path);
-		PRINTER("\n");
+		DISPLAY_TO_STDOUT(path);
+		DISPLAY_TO_STDOUT("\n");
 		free(path);
 
 	}

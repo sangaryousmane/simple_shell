@@ -70,7 +70,7 @@ int builtin(char **cmd)
 
 	while ((built + i)->command)
 	{
-		if (_strcmp(cmd[0], (built + i)->command) == 0)
+		if (_strcompare(cmd[0], (built + i)->command) == 0)
 			return (0);
 		i++;
 	}

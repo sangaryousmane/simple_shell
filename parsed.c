@@ -56,7 +56,7 @@ void  exit_bul(char **cmd, char *input, char **argv, int c)
 	{
 		if (_isalpha(cmd[1][i++]) != 0)
 		{
-			_prerror(argv, c, cmd);
+			_error(argv, c, cmd);
 			break;
 		}
 		else
@@ -64,7 +64,7 @@ void  exit_bul(char **cmd, char *input, char **argv, int c)
 			status = str_to_int(cmd[1]);
 			free(input);
 			free(cmd);
-			exit(statue);
+			exit(status);
 		}
 	}
 }

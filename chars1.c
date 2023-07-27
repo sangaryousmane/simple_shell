@@ -20,10 +20,9 @@ int _putchar(char chr)
 * @n:the number bytes
 * Return: the copied string
 */
-char *_strncpy(char *dest, char *src, int n)
+char *_strncopy(char *dest, char *src, int n)
 {
 	int i = 0;
-	
 	while (i < n && *(src + i))
 	{
 		*(dest + i) = *(src + i);
@@ -45,7 +44,7 @@ char *_strncpy(char *dest, char *src, int n)
 * @s: the string of characters
 * Return: the string  length
 */
-int _strlen(char *str)
+int _strlen(char *s)
 {
 	int i;
 
@@ -90,13 +89,13 @@ int str_to_int(char *s)
 * @str: the string of char
 * Return: nothing
 */
-void _puts(char *s)
+void _puts(char *str)
 {
 	int i = 0;
 
-	while (s[i] != '\0')
+	while (str[i] != '\0')
 	{
-		_putchar(s[i]);
+		_putchar(str[i]);
 		i++;
 	}
 	_putchar('\n');

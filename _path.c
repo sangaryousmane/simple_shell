@@ -2,7 +2,7 @@
 
 
 /**
- * path_cmd -  Search In $PATH For Excutable Command
+ * cmd_path-  Search In $PATH For Excutable Command
  * @command: Parsed Input
  * Return: 1  Failure  0  Success.
  */
@@ -13,9 +13,9 @@ int cmd_path(char **command)
 
 	path = _getenv("PATH");
 	token = _strtok(path, ":");
-	while (value != NULL)
+	while (token != NULL)
 	{
-		cmd_path = build(*command, token);
+		cmd_path = _build_command(*command, token);
 		if (stat(cmd_path, &buffer) == 0)
 		{
 			*command = _strdup(cmd_path);
@@ -58,3 +58,4 @@ char *_build_command(char *token, char *value)
 
 	return (command);
 }
+
