@@ -10,7 +10,7 @@
 */
 int str_cmp(char *s1, char *s2)
 {
-	int cmp = 0;
+	int cmp = 0, i;
 	int len1 = _strlen(s1);
 	int len2 = _strlen(s2);
 
