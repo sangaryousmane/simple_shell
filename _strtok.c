@@ -28,7 +28,7 @@ void print_number_in(int n)
 void _remove(char *buffer)
 {
 	int i = 0;
-	
+
 	while (buffer[i] != '\0')
 	{
 		if (buffer[i] == '#')

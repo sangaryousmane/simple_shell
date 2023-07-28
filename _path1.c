@@ -9,7 +9,7 @@
 char *_strcopy(char *destination, char *source)
 {
 	int i = 0;
-	
+
 	while (source[i])
 	{
 		destination[i] = source[i];
@@ -47,13 +47,12 @@ char *_str_concat(char *dest, char *src)
 
 
 /**
- * _strncompare - Compare Amount (n) Of Characters Of Two Strings.
- * @s1: A String.
- * @s2: A String
- * @n: bytes
- *
- * Return:  1 on error, 0 on success
- */
+* _strncmpare - Compare Amount (n) Of Characters Of Two Strings.
+* @s1: A String.
+* @s2: A String
+* @n: bytes
+* Return:  1 on error, 0 on success
+*/
 int _strncmpare(const char *s1, const char *s2, size_t n)
 {
 	size_t i;
@@ -83,7 +82,7 @@ char *_strdup(char *str)
 
 	len = _strlen(str);
 	s2 = malloc(sizeof(char) * (len + 1));
-	
+
 	if (s2 == NULL)
 	{
 		return (NULL);

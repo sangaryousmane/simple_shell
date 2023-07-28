@@ -51,7 +51,6 @@ char *_getline();
 void exit_(char **command, char *line_read, FILE *fd);
 void _free(char **ppttr, char *ptr);
 void check_file(char **cmd, char *input, char **argv, int c);
-int _strncompare(const char *str1, const char *str2, size_t n);
 char **parse_cmd(char *input_);
 char *_strcopy(char *destination, char *source);
 char *_strdup(char *str);

@@ -23,6 +23,7 @@ int _putchar(char chr)
 char *_strncopy(char *dest, char *src, int n)
 {
 	int i = 0;
+
 	while (i < n && *(src + i))
 	{
 		*(dest + i) = *(src + i);
@@ -99,5 +100,4 @@ void _puts(char *str)
 		i++;
 	}
 	_putchar('\n');
-	return;
 }

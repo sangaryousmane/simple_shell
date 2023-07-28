@@ -70,10 +70,10 @@ char *_memcopy(char *dest, char *src, unsigned int n)
 	return (dest);
 }
 /**
- * fill_an_array - Fill An Array By Constant Byte
+ * _fill - fill an array
  * @a: the void pointer
  * @num: a number
- * @length:Length Int
+ * @length: lenth of the int
  *Return: Void Pointer
  */
 void *_fill(void *a, int num, unsigned int length)

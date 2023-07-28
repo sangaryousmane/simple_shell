@@ -7,7 +7,6 @@
 */
 char *_getline()
 {
-	
 	int i;
 	int _size = 1024, rd;
 	char c = 0;
@@ -59,9 +58,9 @@ char *_getline()
 void mul_env(char **env)
 {
 	int i = 0;
-	
+
 	while (environ[i])
-        {
+	{
 		env[i] = _strdup(environ[i]);
 		i++;
 	}

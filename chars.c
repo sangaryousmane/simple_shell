@@ -1,16 +1,18 @@
 #include "main.h"
 
+
+
 /**
- * str_cmp - Compare two String
- * @s1: first string 
- * @s2: second string
- * Return: 0 if same otherwise difference
- */
+* str_cmp - Compare two String
+* @s1: first string
+* @s2: second string
+* Return: 0 if same otherwise difference
+*/
 int str_cmp(char *s1, char *s2)
 {
-	int cmp = 0, i, len1, len2;
-	len1 = _strlen(s1);
-	len2 = _strlen(s2);
+	int cmp = 0;
+	int len1 = _strlen(s1);
+	int len2 = _strlen(s2);
 
 	if (s1 == NULL || s2 == NULL)
 		return (1);
@@ -86,9 +88,8 @@ char *_int_char(unsigned int n)
 */
 void _rev(char *arr, int len)
 {
-	int i;
+	int i = 0;
 	char tmp;
-	i = 0;
 
 	while (i < (len / 2))
 	{
