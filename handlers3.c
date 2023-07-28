@@ -1,17 +1,13 @@
 #include "main.h"
 
 /**
- * _custom_error - custom error
+ * _error - error based on user command and shell loop
  * @input: user command
  * @count: count loop of shell
  * @argv: name of the program
  * Return: nothing
  */
-<<<<<<< HEAD
-void _custom_error(char **input, int count, char **argv)
-=======
-void _custom_error(char **argv, int count, char **input)
->>>>>>> e8fe9d1eb46e13d07c6d288d5f28cdc901cc472f
+void _error(char *input, int count, char **argv)
 {
 	char *error;
 
@@ -62,13 +58,13 @@ int handle_display(char **command)
 
 
 /**
- *  _error - customize errors
+ *  _custom_error - customize errors
  * @argv: program's name
  * @count: count errors
  * @command: the command
  * Return: nothing
  */
-void _error(char *command, int count, char **argv)
+void _custom_error(char **command, int count, char **argv)
 {
         char *error = _int_char(count);
 
