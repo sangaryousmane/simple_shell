@@ -71,7 +71,6 @@ int str_cmp(char *str1, char *str2);
 int handler(char **command, int error);
 void read_(char *name, char **argv);
 void _error(char *user_input, int count, char **argv);
-void _error(char *command, int count, char **argv);
 int handle_display(char **command);
 
 /** commands for path finding **/
@@ -84,6 +83,7 @@ char *_build_command(char *token, char *value);
 char *_str_concat(char *destination, char *source);
 void _custom_error(char **argv, int c, char **cmd);
 char *_getenv(char *name);
+int _strncompare(const char *s1, const char *s2, size_t n);
 void print_number(unsigned int n);
 void _char_print(int c);
 void _puts(char *str);
