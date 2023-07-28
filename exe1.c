@@ -2,12 +2,12 @@
 
 
 /**
- * read_file - Read Command From File
- * @filename:Filename
- * @argv:Program Name
+ * read_ - Read Command From File
+ * @filename: name of the file
+ * @argv: the program's name
  * Return: -1 or  0
  */
-void read_file(char *filename, char **argv)
+void read_(char *filename, char **argv)
 {
 	FILE *fp;
 	char *line = NULL;
