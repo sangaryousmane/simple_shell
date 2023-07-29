@@ -23,12 +23,16 @@ extern char **environ;
 * struct  shell_builtin - execution n command handling
 * @command: the command to handler
 * @is_builtin: executes when a builtin is true.
-*/ 
+*/
 struct shell_builtin
 {
 	char *command;
 	int (*is_builtin)(char **_line, int e);
 };
+/**
+ * typedef struct shell_builtin _command - command of
+ * Shell builtin
+ */
 
 typedef struct shell_builtin  _command;
 
@@ -39,7 +43,8 @@ int _strlen(char *str);
 void _remove(char *b);
 char *_memcopy(char *d, char *src, unsigned int n);
 void *_fill(void *arr, int element, unsigned int len);
-void *_custom_realloc(void *to, unsigned int pre_size, unsigned int current_size);
+void *_custom_realloc(void *to, unsigned int pre_size,
+unsigned int current_size);
 char *_strncpy(char *dest, char *src, int n);
 
 
@@ -74,7 +79,8 @@ int handle_display(char **command);
 
 /** commands for path finding **/
 int len_int(int n);
-int _env(__attribute__((unused)) char **command, __attribute__((unused)) int error);
+int _env(__attribute__((unused)) char **command,
+__attribute__((unused)) int error);
 int _cd(char **command, __attribute__((unused))int error);
 int _echo(char **command, int error);
 int cmd_path(char **command);

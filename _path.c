@@ -3,7 +3,7 @@
 
 /**
  * cmd_path-  Search In $PATH For Excutable Command
- * @command: Parsed Input
+ * @command: Parsed Input of command
  * Return: 1  Failure  0  Success.
  */
 int cmd_path(char **command)

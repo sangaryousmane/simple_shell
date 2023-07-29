@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * main - Entry point
- * @argc: counts of arg
- * @argv: values passed
+ * main - print the command line name and arg
+ * @argc: counts of arguument
+ * @argv: argument vector to be passed
  * Return: exit status
  */
 int main(int argc, char **argv)

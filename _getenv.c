@@ -3,9 +3,9 @@
 
 
 /**
- * _getenv - gets environment variable's name
- * @name: the name
- * Return: the value or NULL
+ * _getenv - gets  the environment
+ * @name: name
+ * Return: value or NULL
  */
 char *_getenv(char *name)
 {
