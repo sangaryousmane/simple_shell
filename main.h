@@ -53,7 +53,7 @@ int _strcmp(char *s1, char *s2);
 
 char **splitstr(char *line, char *linecopy);
 void exec(char *cmd, _command  *hg);
-void my_getline(char *av);
+void _getline(char *av);
 void non_interactive_mode(char *av);
 char *_getenv(char *path);
 char *find_path(char *cmd);

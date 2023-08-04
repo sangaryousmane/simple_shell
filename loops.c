@@ -36,12 +36,13 @@ void display_prompt(int es)
 	}
 }
 
+
 /**
- * my_getline - Handles the main process for interactive mode
+ * _getline - Handles the main process for interactive mode
  * @av: vector of arguments passed to the program.
  */
 
-void my_getline(char *av)
+void _getline(char *av)
 {
 	int built_ret = 0;
 	ssize_t getlin_ret = 0;
