@@ -11,9 +11,7 @@ int _setenv(const char *name, const char *value, int overwrite)
 {
 
 	char *var = getenv(name);
-	int numVars = 0;
-	char *newVar;
-	char **newEnviron;
+	int numVars = 0, i;
 
 	if (var != NULL && !overwrite)
 	{
@@ -23,16 +21,18 @@ int _setenv(const char *name, const char *value, int overwrite)
 	{
 		numVars++;
 	}
-	**newEnviron = malloc((numVars + 2) * sizeof(char *));
+
+	char **newEnviron = malloc((numVars + 2) * sizeof(char *));
 	if (newEnviron == NULL)
 	{
 		return (-1);
 	}
-	for (int i = 0; i < numVars; i++)
+	for (i = 0; i < numVars; i++)
 	{
 		newEnviron[i] = environ[i];
 	}
-	*newVar = malloc(strlen(name) + strlen(value) + 2);
+
+	char *newVar = malloc(strlen(name) + strlen(value) + 2);
 	if (newVar == NULL)
 	{
 		free(newEnviron);
@@ -57,21 +57,22 @@ int _setenv(const char *name, const char *value, int overwrite)
 int _unsetenv(const char *name)
 {
 	int numVars = 0, newIndex = 0;
-	char **newEnviron = NULL;
+	int i;
 
 	while (environ[numVars] != NULL)
 	{
 		numVars++;
 	}
-	**newEnviron = malloc((numVars + 1) * sizeof(char *));
+
+	char **newEnviron = malloc((numVars + 1) * sizeof(char *));	
 	if (newEnviron == NULL)
 	{
 		return (-1);
 	}
-	for (int i = 0; i < numVars; i++)
+	for (i = 0; i < numVars; i++)
 	{
-		if (strncmp(environ[i], name, _strlen(name)) != 0 ||
-				environ[i][_strlen(name)] != '=')
+		if (strncmp(environ[i], name, strlen(name)) != 0 || 
+				environ[i][strlen(name)] != '=')
 		{
 			newEnviron[newIndex++] = environ[i];
 		}

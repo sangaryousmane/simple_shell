@@ -13,8 +13,6 @@ int handler(char **cmd, int er)
 		{"cd", _cd},
 		{"env", _env},
 		{"echo", _echo},
-		{"setenv", _setenv},
-		{"unsetenv", _unsetenv},
 		{NULL, NULL}
 	};
 	int i = 0;
