@@ -46,6 +46,8 @@ void *_fill(void *arr, int element, unsigned int len);
 void *_custom_realloc(void *to, unsigned int pre_size,
 unsigned int current_size);
 char *_strncpy(char *dest, char *src, int n);
+int _setenv(const char *name, const char *value, int overwrite);
+int _unsetenv(const char *name);
 
 
 /** command for handling commandline args and and string **/
