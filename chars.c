@@ -1,119 +1,124 @@
 #include "main.h"
 
-
-
 /**
-* str_cmp - Compare two String
-* @s1: first string
-* @s2: second string
-* Return: 0 if same otherwise difference
-*/
-int str_cmp(char *s1, char *s2)
-{
-	int cmp = 0, i;
-	int len1 = _strlen(s1);
-	int len2 = _strlen(s2);
-
-	if (s1 == NULL || s2 == NULL)
-		return (1);
-	if (len1 != len2)
-		return (1);
-	for (i = 0; s1[i]; i++)
-	{
-		if (s1[i] != s2[i])
-		{
-			cmp = s1[i] - s2[i];
-			break;
-		}
-		else
-			continue;
-	}
-	return (cmp);
-}
-
-
-
-/**
- * _isalpha - Check if Alphabtic
- *@c: Character
- * Return: 1 If True 0 If Not
+ * _strlen - calculates length of a string
+ * @str: input string
+ *
+ * Return: length of string (excluding null character)
  */
-int _isalpha(int c)
+
+int _strlen(char *str)
 {
-	if (((c >= 97) && (c <= 122)) || ((c >= 65) && (c <= 90)))
-	{
-		return (1);
-	}
-	else
-	{
-		return (0);
-	}
+	int i = 0, len = 0;
+
+	while (str[i++])
+		len++;
+
+	return (len);
 }
 
-
-
 /**
- * _int_char - Convert Integer To Char
- * @n: Int To Convert
- * Return: Char Pointer
+ * str_cpy - function copies string contents from the src to the dest string
+ *           if dest string is already occupied, it will be overwritten
+ * @dest: string to be copied to
+ * @src: string to copy
+ *
+ * Return: address of destination string
  */
-char *_int_char(unsigned int n)
-{
-	int len = 0, i = 0;
-	char *s;
-
-	len = len_int(n);
-	s = malloc(len + 1);
-	if (!s)
-		return (NULL);
-	*s = '\0';
-	while (n / 10)
-	{
-		s[i] = (n % 10) + '0';
-		n /= 10;
-		i++;
-	}
-	s[i] = (n % 10) + '0';
-	_rev(s, len);
-	s[i + 1] = '\0';
-	return (s);
-}
-
-
-/**
-*  _rev - Reverses an array
-* @arr: the array to reverse
-* @len:Length Of Array
-* Return: nothing
-*/
-void _rev(char *arr, int len)
+char *str_cpy(char *dest, char *src)
 {
 	int i = 0;
-	char tmp;
 
-	while (i < (len / 2))
+	while (src[i])
 	{
-		tmp = arr[i];
-		arr[i] = arr[(len - 1) - i];
-		arr[(len - 1) - i] = tmp;
+		dest[i] = src[i];
 		i++;
 	}
+	dest[i] = '\0';
+
+	return (dest);
 }
 
+/**
+ * _strncmp - compares the first n bytes of 2 strings
+ * @str1: first string in comparison
+ * @str2: second string in comparison
+ * @len: number of bytes to compare
+ *
+ * Return: 0 if bytes match, non-zero otherwise
+ */
+int _strncmp(const char *str1, const char *str2, size_t len)
+{
+	while (len--)
+	{
+		if (*str1 != *str2)
+			return (*str1 - *str2);
+		if (*str1 == '\0')
+			break;
+		str1++;
+		str2++;
+	}
+	return (0);
+}
 
 /**
- * len_int - Determine Length Of Int
- * @num: Given Int
- * Return: Length Of Int
+ * _strcmp - function that compares strings
+ * @s1: first string
+ * @s2: second string
+ *
+ * Return: 0 if string is equal.
+ *         ->if s1 > s2, then return + ascii value of ...
+ *         the first extra character in s1
+ *         ->if s1 < s2 then return - ascii value of ...
+ *         first extra character in s2
+ *         ->if s1 != s2 at index i ...
+ *         then return s1[i] - s2[i]
  */
-int len_int(int num)
-{
-	int len = 0;
 
-	while (num != 0)
+int _strcmp(char *s1, char *s2)
+{
+	int i = 0, s1_len = 0, s2_len = 0;
+
+	while (s1[i++])
+		s1_len++;
+
+	i = 0;
+
+	while (s2[i++])
+		s2_len++;
+
+	for (i = 0; s1[i] && s2[i]; i++)
 	{
-		len++;
-		num /= 10;
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 	}
-	return (len);
+
+	if (s1_len > s2_len)
+		return (s1[s2_len]);
+
+	else if (s2_len > s1_len)
+		return ((-1) * s2[s1_len]);
+	else
+		return (0);
+}
+
+/**
+ * _strcat - concatinates source string to dest string
+ * @dest: resultant string after concatination
+ * @source: string to be added to the resultant string
+ *
+ * Return: return dest string
+ */
+char *_strcat(char *dest, char *source)
+{
+	unsigned int  i = 0;
+	char *end = dest + _strlen(dest);
+
+	while (source[i])
+	{
+		*end++ = source[i++];
+	}
+
+	*end = '\0';
+	return (dest);
 }

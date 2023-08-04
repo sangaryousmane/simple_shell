@@ -1,88 +1,20 @@
 #include "main.h"
 
 /**
- * handler - handle builtin commands
- * @cmd: the parsed command
- * @er: the error status
- * Return: -1 Fail 0 Succes (Return :Excute Builtin)
+ * exec - function utilises execve() to execute standard commands in path
+ * @hg: struct of global variables.
+ * @cmd: command that is entered in command line
  */
-
-int handler(char **cmd, int er)
+void exec(char *cmd, _command *hg)
 {
-	 _command bil[] = {
-		{"cd", _cd},
-		{"env", _env},
-		{"echo", _echo},
-		{NULL, NULL}
-	};
-	int i = 0;
+	char **envcpy = environ;
 
-	while ((bil + i)->command)
+	execve(cmd, hg->tokens, envcpy);
+	if (errno == EACCES)
 	{
-		if (str_cmp(cmd[0], (bil + i)->command) == 0)
-		{
-			return ((bil + i)->is_builtin(cmd, er));
-		}
-		i++;
+		write_exec_err(hg);
+		hg->es = 126;
 	}
-	return (-1);
-}
-
-
-
-/**
- * checkcmd - exit the shell
- * @cmd: the parsed command
- * @input: input of the user
- * @c: command execution
- * @argv: name of the program
- * Return: 1 on NULL, -1 wrong command, 0 on command executed
- */
-int checkcmd(char **cmd, char *input, int c, char **argv)
-{
-	int status;
-	pid_t pid;
-
-	if (*cmd == NULL)
-	{
-		return (-1);
-	}
-
-	pid = fork();
-	if (pid == -1)
-	{
-		perror("Error");
-		return (-1);
-	}
-
-	if (pid == 0)
-	{
-		if (_strncompare(*cmd, "./", 2) != 0 && _strncompare(*cmd, "/", 1) != 0)
-		{
-			cmd_path(cmd);
-		}
-
-		if (execve(*cmd, cmd, environ) == -1)
-		{
-			_error(cmd[0], c, argv);
-			free(input);
-			free(cmd);
-			exit(EXIT_FAILURE);
-		}
-		return (EXIT_SUCCESS);
-	}
-	wait(&status);
-	return (0);
-}
-/**
- * _exit_handler - Handle ^C
- * @signal: Captured Signal
- * Return: nothing
- */
-void _exit_handler(int signal)
-{
-	if (signal == SIGINT)
-	{
-		DISPLAY_TO_STDOUT("\n$$$ ");
-	}
+	free_alloced_mem_on_exit(hg);
+	_exit(hg->es);
 }

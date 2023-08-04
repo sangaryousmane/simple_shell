@@ -1,126 +1,161 @@
 #include "main.h"
 
-
 /**
- * _cd - navigate to another directory
- * @cmd: the command
- * @er: status
- * Return: 0 on success, 1 on fail
- */
-int _cd(char **cmd, __attribute__((unused))int er)
+ * count_digits - counts the number of digits in an int including '-' sign
+ * @num: integer to count
+ *
+ * Return: digit count
+*/
+
+int count_digits(int num)
 {
-	int value = -1;
-	char cwd[PATH_MAX];
+	int count = 0;
 
-	if (cmd[1] == NULL)
+	if (num == 0)
+		return (1);
+
+	if (num < 0)
 	{
-		value = chdir(getenv("HOME"));
-	}
-	else if (str_cmp(cmd[1], "-") == 0)
-	{
-		value = chdir(getenv("OLDPWD"));
-	}
-	else
-	{
-		value = chdir(cmd[1]);
+		num = (-1) * num;
+		count++;
 	}
 
-	if (value == -1)
+	while (num != 0)
 	{
-		perror("hsh");
-		return (-1);
+		count++;
+		num /= 10;
 	}
-	else if (value != -1)
-	{
-		getcwd(cwd, sizeof(cwd));
-		setenv("OLDPWD", getenv("PWD"), 1);
-		setenv("PWD", cwd, 1);
-	}
-	return (0);
-}
-
-
-/**
- * _env - Display Enviroment Variable
- * @cmd:Parsed Command
- * @er:Statue of Last command Excuted
- * Return:Always 0
- */
-int _env(__attribute__((unused)) char **cmd, __attribute__((unused)) int er)
-{
-size_t i;
-	int len;
-
-	for (i = 0; environ[i] != NULL; i++)
-	{
-		len = _strlen(environ[i]);
-		write(1, environ[i], len);
-		write(STDOUT_FILENO, "\n", 1);
-	}
-	return (0);
+	return (count);
 }
 
 /**
- * display_help - Displaying Help For Builtin
- * @cmd:Parsed Command
- * @er: Statue Of Last Command Excuted
- * Return: 0 Succes -1 Fail
+ * to_string - converts integer to string
+ * @str: empty string.
+ * @num: number to be converted.
  */
-int display_help(char **cmd, __attribute__((unused))int er)
-{
-	int fd, fw, rd = 1;
-	char c;
 
-	fd = open(cmd[1], O_RDONLY);
-	if (fd < 0)
+void to_string(int num, char *str)
+{
+	int i = 0, j = 0, len, sign = 1;
+	char temp;
+
+	if (num < 0)
 	{
-		perror("Error");
-		return (0);
+		sign = -1;
+		num = -num;
 	}
-	while (rd > 0)
+
+	if (num == 0)
 	{
-		rd = read(fd, &c, 1);
-		fw = write(STDOUT_FILENO, &c, rd);
-		if (fw < 0)
+		str[0] = '0';
+		str[1] = '\0';
+		return;
+	}
+
+	while (num > 0)
+	{
+		str[i++] = num % 10 + '0';
+		num /= 10;
+	}
+
+	if (sign < 0)
+	{
+		str[i++] = '-';
+	}
+
+	str[i] = '\0';
+
+	len = _strlen(str);
+	for (j = 0; j < len / 2; j++)
+	{
+		temp = str[j];
+		str[j] = str[len - j - 1];
+		str[len - j - 1] = temp;
+	}
+}
+
+/**
+ * _atoi - convert string to int
+ * @s: input string
+ *
+ * Return: int value
+*/
+
+int _atoi(char *s)
+{
+	int i, value = 0, sign = 1, end = 0;
+
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		if (s[i] == '-')
+			sign = (-1) * sign;
+
+		if (end > 0 && s[i] == ' ')
+			break;
+		if (value >= INT_MAX / 10 || (value == INT_MAX / 10 && s[i] - '0' > 7))
 		{
-			return (-1);
+			if (sign == 1)
+				return (INT_MAX);
+			else
+				return (INT_MIN);
 		}
+		if (s[i] >= '0' && s[i] <= '9')
+		{
+
+			value = value * 10 + s[i] - '0';
+			end += 1;
+		}
+
 	}
-	_putchar('\n');
-	return (0);
+	value = value * sign;
+	return (value);
 }
+
 /**
- * _echo - Excute Echo Cases
- * @st: Statue Of Last Command Excuted
- * @cmd: Parsed Command
- * Return: Always 0 Or Excute Normal Echo
- */
-int _echo(char **cmd, int st)
+ * _isdigit - checks if string contains only digits
+ * @str: input string
+ *
+ * Return: 1 if it is a digit
+ *         0 if not
+*/
+
+int _isdigit(char *str)
 {
-	char *path;
-	unsigned int  pid = getppid();
+	unsigned int i = 0;
 
-	if (_strncompare(cmd[1], "$?", 2) == 0)
-	{
-		print_number_in(st);
-		DISPLAY_TO_STDOUT("\n");
-	}
-	else if (_strncompare(cmd[1], "$$", 2) == 0)
-	{
-		print_number(pid);
-		DISPLAY_TO_STDOUT("\n");
+	if (str == NULL)
+		return (1);
 
-	}
-	else if (_strncompare(cmd[1], "$PATH", 5) == 0)
-	{
-		path = _getenv("PATH");
-		DISPLAY_TO_STDOUT(path);
-		DISPLAY_TO_STDOUT("\n");
-		free(path);
+	if (str[0] == '-' && str[1] != '\0')
+		i++;
 
+	while (str[i])
+	{
+		if (!(str[i] >= '0' && str[i] <= '9'))
+			return (0);
+		i++;
 	}
-	else
-		return (handle_display(cmd));
 
 	return (1);
+}
+
+/**
+ * tcnt - counts the number of tokens in token string
+ * @tok: input 2 array of tokens
+ *
+ * Return: 1 if it is a digit
+ *         0 if not
+ */
+
+int tcnt(char **tok)
+{
+	unsigned int i = 0;
+	unsigned int count = 0;
+
+	while (tok[i++] != NULL)
+	{
+		count++;
+	}
+
+	return (count);
 }

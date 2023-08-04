@@ -1,78 +1,35 @@
 #include "main.h"
 
 /**
- * main - print the command line name and arg
- * @argc: counts of arguument
- * @argv: argument vector to be passed
- * Return: exit status
+ * handle_sigint - signal handler function
+ * @sig: signal argument
  */
-int main(int argc, char **argv)
+void handle_sigint(int __attribute__((unused))sig)
 {
-	char *input, **cmd;
-	int counter = 0, status = 1, st = 0;
-	(void) argc;
+	char *prompt = "\n$$$ ";
 
-	if (argv[1] != NULL)
-	{
-		read_(argv[1], argv);
-	}
-	signal(SIGINT, _exit_handler);
-	while (status)
-	{
-		counter++;
-		if (isatty(STDIN_FILENO))
-			DISPLAY_TO_STDOUT("$$$ ");
-		input = _getline();
-		if (input[0] == '\0')
-		{
-			continue;
-		}
-		cmd = parse_cmd(input);
-		if (str_cmp(cmd[0], "exit") == 0)
-		{
-			check_file(cmd, input, argv, counter);
-		}
-		else if (builtin(cmd) == 0)
-		{
-			st = handler(cmd, st);
-			_free(cmd, input);
-			continue;
-		}
-		else
-		{
-			st = checkcmd(cmd, input, counter, argv);
-
-		}
-		_free(cmd, input);
-	}
-	return (status);
+	signal(sig, handle_sigint);
+	w_out(prompt);
 }
 
-
 /**
- * builtin - check for builtin
- * @cmd: the command to check
- * Return: 0 Succes -1 Fail
+ * main - handles the mode of the shell
+ * @argc: argument count
+ * @argv: argument vector
+ *
+ * Return: 0 Always
  */
-int builtin(char **cmd)
-{
-	_command built[] = {
-		{"cd", NULL},
-		{"help", NULL},
-		{"echo", NULL},
-		{NULL, NULL}
-	};
-	int i = 0;
-		if (*cmd == NULL)
-	{
-		return (-1);
-	}
 
-	while ((built + i)->command)
+int main(int argc, char *argv[])
+{
+	(void) argc;
+
+	if (argv == NULL || *argv == NULL)
 	{
-		if (str_cmp(cmd[0], (built + i)->command) == 0)
-			return (0);
-		i++;
+		exit(EXIT_FAILURE);
 	}
-	return (-1);
+	signal(SIGINT, handle_sigint);
+	my_getline(argv[0]);
+
+	return (0);
 }
