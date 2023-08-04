@@ -12,6 +12,8 @@ int _setenv(const char *name, const char *value, int overwrite)
 
 	char *var = getenv(name);
 	int numVars = 0, i;
+	char **newEnviron;
+	char *newVar;
 
 	if (var != NULL && !overwrite)
 	{
@@ -22,7 +24,7 @@ int _setenv(const char *name, const char *value, int overwrite)
 		numVars++;
 	}
 
-	char **newEnviron = malloc((numVars + 2) * sizeof(char *));
+	newEnviron = malloc((numVars + 2) * sizeof(char *));
 	if (newEnviron == NULL)
 	{
 		return (-1);
@@ -32,7 +34,7 @@ int _setenv(const char *name, const char *value, int overwrite)
 		newEnviron[i] = environ[i];
 	}
 
-	char *newVar = malloc(strlen(name) + strlen(value) + 2);
+	newVar = malloc(strlen(name) + strlen(value) + 2);
 	if (newVar == NULL)
 	{
 		free(newEnviron);
@@ -58,13 +60,14 @@ int _unsetenv(const char *name)
 {
 	int numVars = 0, newIndex = 0;
 	int i;
+	char **newEnviron;
 
 	while (environ[numVars] != NULL)
 	{
 		numVars++;
 	}
+	newEnviron = malloc((numVars + 1) * sizeof(char *));	
 
-	char **newEnviron = malloc((numVars + 1) * sizeof(char *));	
 	if (newEnviron == NULL)
 	{
 		return (-1);
