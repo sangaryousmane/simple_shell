@@ -66,7 +66,7 @@ int _unsetenv(const char *name)
 	{
 		numVars++;
 	}
-	newEnviron = malloc((numVars + 1) * sizeof(char *));	
+	newEnviron = malloc((numVars + 1) * sizeof(char *));
 
 	if (newEnviron == NULL)
 	{
@@ -74,7 +74,7 @@ int _unsetenv(const char *name)
 	}
 	for (i = 0; i < numVars; i++)
 	{
-		if (strncmp(environ[i], name, strlen(name)) != 0 || 
+		if (strncmp(environ[i], name, strlen(name)) != 0 ||
 				environ[i][strlen(name)] != '=')
 		{
 			newEnviron[newIndex++] = environ[i];
