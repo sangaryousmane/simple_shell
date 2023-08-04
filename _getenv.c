@@ -17,7 +17,7 @@ char *_getenv(char *name)
 
         while (*env != NULL)
         {
-                if (_strncmp(*env, path, len) == 0 && (*env)[len] == '=')
+                if (_strncompare(*env, path, len) == 0 && (*env)[len] == '=')
                 {
                         return (&((*env)[len + 1]));
                 }
