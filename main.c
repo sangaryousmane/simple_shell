@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	signal(SIGINT, handle_sigint);
-	my_getline(argv[0]);
+	_getline(argv[0]);
 
 	return (0);
 }
