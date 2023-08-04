@@ -9,34 +9,20 @@
  */
 char *_getenv(char *name)
 {
-	size_t l;
-	size_t v;
-	char *value;
-	int i, x, j;
+	char **env;
+        size_t len;
 
-	l = _strlen(name);
-	for (i = 0 ; environ[i]; i++)
-	{
-		if (_strncompare(name, environ[i], l) == 0)
-		{
-			v = _strlen(environ[i]) - l;
-			value = malloc(sizeof(char) * v);
-			if (!value)
-			{
-				free(value);
-				perror("unable to alloc");
-				return (NULL);
-			}
+        env = environ;
+        len = _strlen(path);
 
-			j = 0;
-			for (x = l + 1; environ[i][x]; x++, j++)
-			{
-				value[j] = environ[i][x];
-			}
-			value[j] = '\0';
+        while (*env != NULL)
+        {
+                if (_strncmp(*env, path, len) == 0 && (*env)[len] == '=')
+                {
+                        return (&((*env)[len + 1]));
+                }
+                env++;
+        }
 
-			return (value);
-		}
-	}
-	return (NULL);
+        return (NULL);
 }
