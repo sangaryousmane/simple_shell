@@ -51,14 +51,14 @@ int _strncmp(const char *str1, const char *str2, size_t len);
 char *_strcat(char *dest, char *source);
 int _strcmp(char *s1, char *s2);
 
-char **splitstr(char *line, char *linecopy);
+char **_split(char *line, char *linecopy);
 void exec(char *cmd, _command  *hg);
 void _getline(char *av);
 void non_interactive_mode(char *av);
 char *_getenv(char *path);
 char *find_path(char *cmd);
 int check_path(char *cmd);
-void forking(_command *hg);
+void _fork_main(_command *hg);
 void display_prompt(int es);
 void w_out(char *message);
 

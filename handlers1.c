@@ -1,13 +1,12 @@
 #include "main.h"
 
 /**
- * count_digits - counts the number of digits in an int including '-' sign
+ * _counter - counts the number of digits in an int including '-' sign
  * @num: integer to count
  *
  * Return: digit count
 */
-
-int count_digits(int num)
+int _counter(int num)
 {
 	int count = 0;
 

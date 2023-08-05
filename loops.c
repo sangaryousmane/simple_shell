@@ -23,7 +23,7 @@ void display_prompt(int es)
 
 	if (isatty(STDIN_FILENO))
 	{
-		str_es = malloc(sizeof(char) * (count_digits(es) + 1));
+		str_es = malloc(sizeof(char) * (_counter(es) + 1));
 		malloc_checkptr(str_es);
 		to_string(es, str_es);
 		if (es == 0)
@@ -67,7 +67,7 @@ void _getline(char *av)
 		cmd.copy = malloc(sizeof(char) * getlin_ret);
 		malloc_checkptr(cmd.copy);
 		str_cpy(cmd.copy, cmd.lineptr);
-		cmd.tokens = splitstr(cmd.lineptr, cmd.copy);
+		cmd.tokens = _split(cmd.lineptr, cmd.copy);
 		if (cmd.tokens == NULL)
 			continue;
 		built_ret = ch_builtin(&cmd);
@@ -76,6 +76,6 @@ void _getline(char *av)
 
 		cmd.es = 0;
 
-		forking(&cmd);
+		_fork_main(&cmd);
 	}
 }

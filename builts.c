@@ -99,7 +99,7 @@ void echo_args(char **tok, int *es)
 			old_size = _strlen(tok[i]) + 1;
 			if (tok[i][1] == '$' && tok[i][2] == '\0')
 			{
-				str = malloc(sizeof(char) * (count_digits(pid) + 1));
+				str = malloc(sizeof(char) * (_counter(pid) + 1));
 				malloc_checkptr(str);
 				to_string(pid, str);
 				tok[i] = _realloc(tok[i], old_size, _strlen(str) + 1);
@@ -109,7 +109,7 @@ void echo_args(char **tok, int *es)
 			}
 			else if (tok[i][1] == '?' && tok[i][2] == '\0')
 			{
-				str = malloc(sizeof(char) * (count_digits(*es) + 1));
+				str = malloc(sizeof(char) * (_counter(*es) + 1));
 				malloc_checkptr(str);
 				to_string(*es, str);
 				tok[i] = _realloc(tok[i], old_size, _strlen(str) + 1);

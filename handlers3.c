@@ -7,7 +7,7 @@
 
 void write_exec_err2(_command *cmd)
 {
-	char *str = malloc(sizeof(char) * (count_digits(cmd->ln) + 1));
+	char *str = malloc(sizeof(char) * (_counter(cmd->ln) + 1));
 
 	malloc_checkptr(str);
 	to_string(cmd->ln, str);

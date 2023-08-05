@@ -24,7 +24,7 @@ void forkerr(_command *cmd)
 * forking - initializes forking the main process for child process...
 * @command: struct of global variables.
 */
-void forking(_command *command)
+void _fork_main(_command *command)
 {
 	pid_t fret;
 	int status, tracker = 0;

@@ -50,7 +50,7 @@ void getret(_command *cmd, ssize_t ret)
  */
 void write_cmd_err(_command *cmd)
 {
-	char *str = malloc(sizeof(char) * (count_digits(cmd->ln) + 1));
+	char *str = malloc(sizeof(char) * (_counter(cmd->ln) + 1));
 
 	malloc_checkptr(str);
 	to_string(cmd->ln, str);
@@ -71,7 +71,7 @@ void write_cmd_err(_command *cmd)
  */
 void write_exec_err(_command *cmd)
 {
-	char *str = malloc(sizeof(char) * (count_digits(cmd->ln) + 1));
+	char *str = malloc(sizeof(char) * (_counter(cmd->ln) + 1));
 	char *message = ": Permission denied";
 
 	malloc_checkptr(str);

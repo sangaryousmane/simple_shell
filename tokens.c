@@ -7,8 +7,7 @@
  *
  * Return: 2d array of tokens
  */
-
-char **splitstr(char *line, char *linecopy)
+char **_split(char *line, char *linecopy)
 {
 	char *token = NULL;
 	char *delim = " \n\t\r";
