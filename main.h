@@ -39,7 +39,7 @@ typedef struct _shellbuilts
 } _command;
 
 
-int count_digits(int num);
+int _counter(int num);
 void to_string(int num, char *str);
 int _atoi(char *s);
 int _isdigit(char *str);
